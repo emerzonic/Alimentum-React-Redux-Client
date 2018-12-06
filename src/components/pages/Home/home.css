@@ -1,5 +1,13 @@
 
 
-.card-img-top{
+.category-div .card-img-top{
     height:15rem;
+}
+
+.recipe-div .card-img-top{
+    height:15rem;
+}
+
+.recipe-detail-div .card-img-top{
+    height:30rem;
 }
