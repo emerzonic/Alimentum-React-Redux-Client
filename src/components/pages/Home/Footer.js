@@ -2,9 +2,9 @@ import React from 'react';
 import './home.css';
 
 const Footer = () => (
-    <div className="ui bottom fixed menu">
-        <span className="item">Built with Spring Boot & React Copyright &copy;2018 Emerson Doyah Projects</span>
-    </div> 
+    <nav className="nav navbar-light text-center">
+        <span className="item p-5">Built with Spring Boot & React Copyright &copy;2018 Emerson Doyah Projects</span>
+    </nav> 
 );
 
 export default Footer;
