@@ -17,7 +17,9 @@ class  Home extends Component {
             categories:[],
             recipes:[],
             recipeDetail:{},
-            pageTitle:""
+            pageTitle:"",
+            saveFeedBack:"",
+
         }
 
          this.dataList = [];
@@ -56,10 +58,13 @@ class  Home extends Component {
     this.onClick = (event) => {
         let type = event.target.getAttribute("data-type");
         let param = event.target.getAttribute("data-param");
+        console.log(type);
         type === "category"?
         this.getRecipesByCategory(param):
         type === "name"?
         this.getRecipesById(param):
+        type === "save"?
+        this.saveRecipe():
         console.log("no param");
     };
     
@@ -86,6 +91,23 @@ class  Home extends Component {
             })
         }).catch(err => console.log(err));
     };
+
+    this.saveRecipe = () =>{  
+        console.log("save");
+        let recipe = this.state.recipeDetail;
+        console.log(recipe);
+        axios.post("http://localhost:5000/saveRecipe/", recipe).then(res => {
+            let response = "";
+            if(res.data === "success"){
+                response = "Your recipe was successfully saved!"
+            }else{
+                response = "Sorry, Something went wrong while saving your recipe. Please try again."
+            }
+            this.setState({
+                saveFeedBack:response
+            })            
+        }).catch(err => console.log(err));
+    };
 }
     
     render() { 
@@ -98,6 +120,7 @@ class  Home extends Component {
                             <div className="row">
                                 <div className="col-md-4">
                                     <h1 className="display-4">{this.state.pageTitle}</h1>
+                                    <p className="">{this.state.saveFeedBack}</p>
                                 </div>
                                 <div className="col-md-8">
                                     <form className="form-inline mt-3 w-100">
