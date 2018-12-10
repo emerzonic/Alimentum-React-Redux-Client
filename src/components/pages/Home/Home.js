@@ -10,6 +10,11 @@ import Img from '../../../assets';
 import category from '../../../category';
 import axios from 'axios';
 import util from '../../util';
+
+let img = {
+    backgroundImage: 'url(' + Img.headerImg.header + ')',
+    backgroundRepeat:"no-repeat",
+  };
 class  Home extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +24,6 @@ class  Home extends Component {
             recipeDetail:{},
             pageTitle:"",
             saveFeedBack:"",
-
         }
 
          this.dataList = [];
@@ -49,7 +53,7 @@ class  Home extends Component {
          }
 
     //Get the images once
-     this.getData(Img, this.images);
+     this.getData(Img.catImg, this.images);
      this.getData(category, this.category);
      this.sumList();
      this.state.categories = this.dataList;
@@ -93,15 +97,13 @@ class  Home extends Component {
     };
 
     this.saveRecipe = () =>{  
-        console.log("save");
         let recipe = this.state.recipeDetail;
-        console.log(recipe);
         axios.post("http://localhost:5000/saveRecipe/", recipe).then(res => {
             let response = "";
             if(res.data === "success"){
                 response = "Your recipe was successfully saved!"
             }else{
-                response = "Sorry, Something went wrong while saving your recipe. Please try again."
+                response = "This recipe is already saved as favorite."
             }
             this.setState({
                 saveFeedBack:response
@@ -115,7 +117,7 @@ class  Home extends Component {
         return (
             <div>
                 <Nav/>
-                    <div className="jumbotron jumbotron-fluid shadow">
+                    <div className="jumbotron jumbotron-fluid shadow" style={img}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-md-4">
