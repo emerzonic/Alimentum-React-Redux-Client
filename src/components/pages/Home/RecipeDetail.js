@@ -1,6 +1,7 @@
 import React from 'react';
 import  {Component} from 'react';
 import './home.css';
+import Modal from './Modal';
 
 
 class RecipeDetail extends Component {
@@ -9,16 +10,16 @@ class RecipeDetail extends Component {
 
   };
   render() {
-    console.log(this.props.recipeDetail.strIngredients);
-      return <div className="card mb-3 recipe-detail-div border-0 shadow-sm">
+      return <div>
+      <div className="card mb-3 recipe-detail-div border-0 shadow-sm">
                 <div className="row">
                       <div className="col-md-8">
                           <img className="card-img-top img-fluid rounded ml-md-4" src={this.props.recipeDetail.strMealThumb} alt={this.props.name}/>
                       </div>
                       <div className="col-md-4">
-                            <button className="btn btn-primary mx-1 w-100 m-2 " data-type="name" onClick={this.props.onClick}>Watch Video</button>
-                            <button className="btn btn-primary mx-1 w-100 m-2" data-type="name" onClick={this.props.onClick}>Save Recipe</button>
-                            <button className="btn btn-primary mx-1 w-100 m-2" data-type="name" onClick={this.props.onClick}>Read More</button>
+                            <button className="btn btn-primary mx-1 w-100 m-2" data-toggle="modal" data-target="#exampleModal">Watch Video</button>
+                            <button className="btn btn-primary mx-1 w-100 m-2" data-type="save" onClick={this.props.onClick}>Save Recipe</button>
+                            <a href={this.props.recipeDetail.strSource} className="btn btn-primary mx-1 w-100 m-2" target="_blank" rel="noopener noreferrer">Read More</a>
                       </div>
                   </div>
                   <div className="card-body">
@@ -49,7 +50,8 @@ class RecipeDetail extends Component {
                     </div>
                   </div>
             </div>
-
+        <Modal recipe={this.props.recipeDetail}/>                  
+    </div>
       }
 }
  
