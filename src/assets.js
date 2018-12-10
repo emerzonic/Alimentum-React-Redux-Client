@@ -1,5 +1,6 @@
 //Images object required from the "img" folder
 const imagesObj = {
+  catImg:{
     img1: require('./images/vege.jpg'),
     img2: require('./images/breakfast.jpg'),
     img3: require('./images/chicken.jpg'),
@@ -12,6 +13,10 @@ const imagesObj = {
     img10: require('./images/starter.jpg'),
     img11: require('./images/vegan.jpg'),
     img12: require('./images/beef.jpg'),
+  },
+  headerImg:{
+    header:require('./images/headerImg.png')
   }
+}
 
   export default imagesObj;
