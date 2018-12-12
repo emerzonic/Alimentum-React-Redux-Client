@@ -1,11 +1,32 @@
+body{
+    background-color: rgb(244, 247, 245);
+}
 
+.navbar-light .navbar-nav .nav-link{
+    font-family: 'Bree Serif', serif;
+    font-size: 1.5rem;
+    color:#ffffff
+}
+
+.navbar-light .navbar-brand{
+    font-family: 'Bree Serif', serif;
+    font-size: 1.5rem;
+    color:green;
+    font-weight: bold;
+    letter-spacing: 0.5rem;
+}
 
 .category-div .card-img-top{
     height:15rem;
 }
 
 .recipe-div .card-img-top{
-    height:15rem;
+    height:20rem;
+}
+
+.recipe-div .card-img-top:hover{
+    opacity: 0.9;
+    border:0.3rem solid green;
 }
 
 .recipe-detail-div .card-img-top{
@@ -23,3 +44,13 @@
 .nav{
     background: #eaedef;
 }
+
+.category-title, .recipe-title, .card-title{
+    font-family: 'Bree Serif', serif;
+}
+
+.category-div:hover{
+
+    
+}
+
