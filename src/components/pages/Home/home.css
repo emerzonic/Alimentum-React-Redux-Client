@@ -21,12 +21,13 @@ body{
 }
 
 .recipe-div .card-img-top{
-    height:20rem;
+    height:21rem;
 }
 
 .recipe-div .card-img-top:hover{
     opacity: 0.9;
     border:0.3rem solid green;
+    cursor: pointer;
 }
 
 .recipe-detail-div .card-img-top{
@@ -47,10 +48,28 @@ body{
 
 .category-title, .recipe-title, .card-title{
     font-family: 'Bree Serif', serif;
+    color:green;
 }
 
 .category-div:hover{
 
     
+}
+
+.media .img-fluid{
+    max-width: 10rem;
+}
+
+.alert{
+    font-weight:bold;
+}
+
+.home-page-cards{
+    cursor: pointer;
+
+}
+
+.card-img{
+    opacity: 0.1;
 }
 
