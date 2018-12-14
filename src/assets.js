@@ -53,6 +53,9 @@ const assets = {
   headerImg: {
     header: require('./images/headerImg.png')
   },
+  errorImg: {
+    error: require('./images/error2.gif')
+  },
 }
 
 export default assets;
