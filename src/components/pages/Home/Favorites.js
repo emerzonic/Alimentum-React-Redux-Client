@@ -1,8 +1,8 @@
 import React from 'react';
 import { Component } from 'react';
-import RecipeCategories from "./RecipeCategory";
-import Recipes from "./Recipes";
+import FavoriteRecipes from "./FavoriteRecipes";
 import RecipeDetail from "./RecipeDetail";
+import Exception from "./Exception";
 import './home.css';
 // import Img from '../../../assets';
 import axios from 'axios';
@@ -17,8 +17,9 @@ class  Favorites extends Component {
             recipes:[],
             recipeDetail:{},
             pageTitle:"",
-            saveFeedBack:"",
-            name:""
+            deleteFeedBack:"",
+            name:"",
+            exception:""
         }
 
     //      this.dataList = [];
@@ -54,17 +55,18 @@ class  Favorites extends Component {
     //  this.state.categories = this.dataList;
     //  this.state.pageTitle = "Categories";
 
-    // this.onClick = (event) => {
-    //     let type = event.target.getAttribute("data-type");
-    //     let param = event.target.getAttribute("data-param");
-    //     type === "category"?
-    //     this.getRecipesByCategory(param):
-    //     type === "name"?
-    //     this.getRecipesById(param):
-    //     type === "save"?
-    //     this.saveRecipe():
-    //     console.log("no param");
-    // };
+    this.onClick = (event) => {
+        let type = event.target.getAttribute("data-type");
+        let id = event.target.getAttribute("data-id");
+        console.log(type +" "+ id)
+        type === "delete"?
+            this.deleteRecipe(id):
+        type === "detail"?
+            this.getRecipeById(id):
+        // type === "save"?
+        // this.saveRecipe():
+        console.log("no param");
+    };
 
     // this.onChange = (e) => {
     //     this.setState({name:e.target.value})
@@ -85,41 +87,43 @@ class  Favorites extends Component {
 
     this.getUserRecipes = () =>{  
         let username = "emerson";
-        axios.get(`http://localhost:5000/getUserRecipes/${username}`).then(res => 
+        axios.get(`http://localhost:5000/getUserRecipes/${username}`).then(res => {
+        if(!res || res.data==="exception"){
+            this.setState({
+                exception: "exception",
+            })
+        }else{
             this.setState({
                 recipes: res.data,
-                pageTitle:"",
-                categories:[]
             })
-        ).catch(err => console.log(err));
+        }
+        }).catch(err => console.log(err));
     };
 
-    // this.getRecipesById = (param) =>{  
-    //     axios.get(`http://localhost:5000/searchByRecipeId/${param}`).then(res => {
-    //     let refinedRecipe = util.getRecipeObj(res.data[0]);
-    //         this.setState({
-    //             recipes: [],
-    //             pageTitle:'',
-    //             categories:[],
-    //             recipeDetail:refinedRecipe
-    //         })
-    //     }).catch(err => console.log(err));
-    // };
+    this.getRecipeById = (id) =>{  
+        axios.get(`http://localhost:5000/getOneRecipe/${id}`).then(res => {
+            console.log(res)
+            // this.setState({
+            //     recipes: [],
+            //     pageTitle:'',
+            //     categories:[],
+            //     recipeDetail:res.data
+            // })
+        }).catch(err => console.log(err));
+    };
 
-    // this.saveRecipe = () =>{  
-    //     let recipe = this.state.recipeDetail;
-    //     axios.post("http://localhost:5000/saveRecipe/", recipe).then(res => {
-    //         let response = "";
-    //         if(res.data === "success"){
-    //             response = "Your recipe was successfully saved!"
-    //         }else{
-    //             response = "This recipe is already saved as favorite."
-    //         }
-    //         this.setState({
-    //             saveFeedBack:response
-    //         })            
-    //     }).catch(err => console.log(err));
-    // };
+    this.deleteRecipe = (id) =>{  
+        let username = "emerson";
+        axios.get(`http://localhost:5000/deleteRecipe/${username}/${id}`).then(res => {
+            let response = "";
+            if(res.data === "success"){
+                response = "Your recipe was successfully saved!"
+                this.getUserRecipes();
+            }else{
+                response = "This recipe is already saved as favorite."
+            }
+        }).catch(err => console.log(err));
+    };
 }
 
 componentDidMount(){
@@ -130,10 +134,17 @@ componentDidMount(){
         console.log(this.state);
         return (
             <div>
+            {!this.state.exception?
                 <div className="container">
                     <div className="row">
-                    <Recipes state={this.state} onClick={this.onClick}/>                        </div>
+                    {this.state.recipes?
+                        <FavoriteRecipes state={this.state} onClick={this.onClick}/>:
+                    this.state.recipeDetail?
+                    <RecipeDetail recipeDetail={this.state.recipeDetail} onClick={this.onClick}/>:""} 
                     </div>
+                </div>:
+                <Exception/> 
+            }    
             </div>
          );
     }
