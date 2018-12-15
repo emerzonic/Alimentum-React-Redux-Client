@@ -56,6 +56,37 @@ const assets = {
   errorImg: {
     error: require('./images/error2.gif')
   },
+  loadingImg: {
+    isloading: require('./images/loading.gif')
+  },
+  homeCardsObj: {
+    card1: {
+      image: require('./images/vege.jpg'),
+      text: "Categories",
+      icon:"fas fa-list-alt home-page-icons",
+      url:"/categories"
+    },
+    card2: {
+      image: require('./images/breakfast.jpg'),
+      text: "Favorites",
+      icon:"far fa-star home-page-icons",
+      url:"/user/favorites"
+    },
+    card3: {
+      image: require('./images/chicken.jpg'),
+      text: "Login or Sign Up",
+      icon:"fas fa-lock-open home-page-icons",
+      url:"/user/login"
+    },
+    card4: {
+      image: require('./images/desert.jpg'),
+      text: "Search Recipes",
+      icon:"fas fa-search home-page-icons",
+      url:"/categories"
+    },
+  },
+
+
 }
 
 export default assets;

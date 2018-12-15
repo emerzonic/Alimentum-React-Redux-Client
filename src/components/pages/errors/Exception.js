@@ -1,6 +1,6 @@
 import React from 'react';
-import './home.css';
 import Img from '../../../assets';
+import '../home/home.css';
 
 
 let img = {

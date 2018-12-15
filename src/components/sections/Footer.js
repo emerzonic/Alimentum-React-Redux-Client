@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css';
+import '../pages/home/home.css';
 
 const Footer = () => (
     <nav className="nav navbar-light text-center">

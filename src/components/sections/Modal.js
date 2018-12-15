@@ -1,5 +1,6 @@
 import React from 'react';
-import './home.css';
+import '../pages/home/home.css';
+
 
 const Modal = (props) => (
     <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
 import FavoriteRecipes from "./FavoriteRecipes";
-import RecipeDetail from "./RecipeDetail";
-import Exception from "./Exception";
-import './home.css';
+import RecipeDetail from "../recipeDetail/RecipeDetail";
+import Exception from "../errors/Exception";
+import '../home/home.css';
 // import Img from '../../../assets';
 import axios from 'axios';
+import Loading from '../../sections/Loading';
 // import util from '../../util';
 
 
@@ -22,39 +23,6 @@ class  Favorites extends Component {
             exception:""
         }
 
-    //      this.dataList = [];
-    //      this.images = [];
-    //      this.category = [];
-        
-    //      this.sumList = ()=>{
-    //      for(let i = 0; i<this.images.length; i++){
-    //          const newObj = {
-    //              img: this.images[i],
-    //              cat:this.category[i]
-    //          }
-    //          this.dataList.push(newObj)
-    //      }
-    //      }
-         
-    //      //This method  takes the "Img" object above extra and 
-    //      //push all the values to the images property array 
-    //      this.getData = (obj, arr) => {
-    //        for (const key of Object.keys(obj)) {
-    //          arr.push(obj[key]);
-    //        }
-    //      } 
-
-    //      this.getDetailData = (obj)=>{
-
-    //      }
-
-    // //Get the images once
-    //  this.getData(Img.catImg, this.images);
-    //  this.getData(category, this.category);
-    //  this.sumList();
-    //  this.state.categories = this.dataList;
-    //  this.state.pageTitle = "Categories";
-
     this.onClick = (event) => {
         let type = event.target.getAttribute("data-type");
         let id = event.target.getAttribute("data-id");
@@ -63,8 +31,6 @@ class  Favorites extends Component {
             this.deleteRecipe(id):
         type === "detail"?
             this.getRecipeById(id):
-        // type === "save"?
-        // this.saveRecipe():
         console.log("no param");
     };
 
@@ -100,17 +66,6 @@ class  Favorites extends Component {
         }).catch(err => console.log(err));
     };
 
-    this.getRecipeById = (id) =>{  
-        axios.get(`http://localhost:5000/getOneRecipe/${id}`).then(res => {
-            console.log(res)
-            // this.setState({
-            //     recipes: [],
-            //     pageTitle:'',
-            //     categories:[],
-            //     recipeDetail:res.data
-            // })
-        }).catch(err => console.log(err));
-    };
 
     this.deleteRecipe = (id) =>{  
         let username = "emerson";
@@ -137,10 +92,10 @@ componentDidMount(){
             {!this.state.exception?
                 <div className="container">
                     <div className="row">
-                    {this.state.recipes?
-                        <FavoriteRecipes state={this.state} onClick={this.onClick}/>:
-                    this.state.recipeDetail?
-                    <RecipeDetail recipeDetail={this.state.recipeDetail} onClick={this.onClick}/>:""} 
+                    {this.state.recipes.length?
+                        <FavoriteRecipes state={this.state} history={this.props.history}/>:
+                        <Loading/>
+                   } 
                     </div>
                 </div>:
                 <Exception/> 

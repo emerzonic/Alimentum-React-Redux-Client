@@ -1,6 +1,6 @@
 import React from 'react';
 import  {Component} from 'react';
-import './home.css';
+import '../home/home.css';
 
 
 class RecipeCategories extends Component {
@@ -10,7 +10,8 @@ class RecipeCategories extends Component {
                 <img className="card-img-top mt-3 rounded" src={item.image} alt={this.props.name}/>
                 <div className="card-body">
                   <h5 className="card-title category-title">{item.category}</h5>
-                  <button className="btn btn-primary col-sm-12" data-type="category" data-param={item.category} onClick={this.props.onClick}>Go somewhere</button>
+                  <button className="btn btn-primary col-sm-12" data-type="category" 
+                  onClick={()=>this.props.history.push(`/categories/${item.category}`)}>Go somewhere</button>
                 </div>
               </div>
         });
