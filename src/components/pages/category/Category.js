@@ -6,7 +6,6 @@ import axios from 'axios';
 import util from '../../util';
 import '../home/home.css';
 
-
 class  Category extends Component {
     constructor(props) {
         super(props);
@@ -41,7 +40,6 @@ class  Category extends Component {
     
 }
     render() { 
-        console.log(this.state);
         return (
             <div>
                 <Header state={this.state} onChange={this.onChange} onSubmit={this.onSubmit}/>

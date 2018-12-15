@@ -20,10 +20,8 @@ class recipe extends Component {
 
     this.getRecipeById = () =>{ 
         let recipeId = this.props.match.params.recipeId;
-        console.log("recipeId: "+recipeId);
         axios.get(`http://localhost:5000/searchByRecipeId/${recipeId}`).then(res => {
         let refinedRecipe = util.getRecipeObj(res.data[0]);
-        console.log("refined: "+refinedRecipe);
             this.setState({
                 pageTitle:'',
                 recipe:refinedRecipe
@@ -51,11 +49,9 @@ class recipe extends Component {
 }
     
     componentDidMount(){
-        console.log("mounted")
       this.getRecipeById();
     }
   render() {
-    console.log(this.state)
       return <div>
                 <Header state={this.state} onChange={this.onChange} onSubmit={this.onSubmit}/>
                 <div className="container">

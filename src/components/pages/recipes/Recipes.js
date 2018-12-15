@@ -30,7 +30,6 @@ componentDidMount(){
 
 
   render() {
-    console.log(this.state)
       return  <div className="container">
                   <div className="row">
                     {this.state.recipes.map(item => 

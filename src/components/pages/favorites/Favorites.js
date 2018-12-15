@@ -1,14 +1,12 @@
 import React from 'react';
 import { Component } from 'react';
 import FavoriteRecipes from "./FavoriteRecipes";
-import RecipeDetail from "../recipeDetail/RecipeDetail";
 import Exception from "../errors/Exception";
 import '../home/home.css';
 // import Img from '../../../assets';
 import axios from 'axios';
 import Loading from '../../sections/Loading';
 // import util from '../../util';
-
 
 class  Favorites extends Component {
     constructor(props) {
@@ -80,13 +78,10 @@ class  Favorites extends Component {
         }).catch(err => console.log(err));
     };
 }
-
 componentDidMount(){
     this.getUserRecipes()
 }
-    
     render() { 
-        console.log(this.state);
         return (
             <div>
             {!this.state.exception?
