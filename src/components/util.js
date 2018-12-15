@@ -30,14 +30,12 @@ export default {
             strIngredients: ingredients,
             strInstructions: instructions
         };
-
         return refinedRecipeObj;
     },
 
     getDataArray: (obj) => {
         let array = [];
         for (const key of Object.keys(obj)) {
-            console.log(obj[key])
             array.push(obj[key]);
         }
         return array;

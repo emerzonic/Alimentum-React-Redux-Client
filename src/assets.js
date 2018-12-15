@@ -61,7 +61,7 @@ const assets = {
   },
   homeCardsObj: {
     card1: {
-      image: require('./images/vege.jpg'),
+      image: require('./images/beef.jpg'),
       text: "Categories",
       icon:"fas fa-list-alt home-page-icons",
       url:"/categories"
