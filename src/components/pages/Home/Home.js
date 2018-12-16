@@ -31,11 +31,12 @@ class  Home extends Component {
                 <div className="row">
                     {this.state.cards.map((card,i)=>
                         <div className="col-md-3" key={i}>
-                            <div className="card bg-dark text-white my-3 text-center home-page-cards" onClick={()=>this.props.history.push(card.url)}>
+                            <div className="card bg-dark text-white my-3 text-center home-page-cards" 
+                                 onClick={()=>this.props.history.push(card.url)}>
                                 <img className="card-img home-page-img" src={card.image} alt="Card"/>
                                 <div className="card-img-overlay">
                                     <h5 className="card-title text-white mt-4 page-links" >{card.text}</h5>
-                                    <i class={card.icon}></i>
+                                    <i className={card.icon}></i>
                                 </div>
                             </div>                            
                         </div>                            
