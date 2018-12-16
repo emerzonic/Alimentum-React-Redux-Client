@@ -1,46 +1,61 @@
 import React from 'react';
+import {Component} from 'react';
 import Img from '../../assets';
+import axios from 'axios';
 import '../pages/home/home.css';
-
-
+import './section.css';
 
 let img = {
     backgroundImage: 'url(' + Img.headerImg.header + ')',
     backgroundRepeat:"no-repeat",
   };
 
-const Header = (props) => (
-<div className="jumbotron jumbotron-fluid shadow" style={img}>
-    <div className="container">
-        <div className="row">
-                <div className="col-6 mx-auto">
-                    {props.state.saveFeedBack? 
-                        <div className="alert alert-success" role="alert">
-                        <i className="fas fa-check mr-2"></i>
-                            {props.state.saveFeedBack}
-                        </div>:
-                        props.state.unsaveFeedBack?
-                        <div className="alert alert-info " role="alert">
-                        <i className="fas fa-times mr-2"></i>
-                            {props.state.unsaveFeedBack}
-                        </div>:""
-                    }
-                </div>
-        </div>
-        <div className="row">
-            <div className="col-md-6">
-                <h1 className="display-4 text-right">{props.state.pageTitle}</h1>
-            </div>
-            <div className="col-md-6">
-                <form className="form-inline mt-3 w-100" onSubmit={props.onSubmit}>
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search Recipes" aria-label="Search" 
-                    onChange={props.onChange} value={props.state.name}/>
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-);
+class  Header extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { 
+            name:""
+        }
 
+    this.onChange = (e) => {
+        this.setState({name:e.target.value})
+    };
+
+    this.onSubmit = (e) => {
+        e.preventDefault();
+        let name = this.state.name;
+        axios.get(`http://localhost:5000/searchByName/${name}`).then(res => {
+            this.props.history.push({
+                pathname: '/search/results',
+                state: { 
+                    recipes: res.data,
+                    pageTitle: name
+                }
+              })
+    }).catch(err => console.log(err));
+    };
+}
+    render() { 
+        return (
+            <div className="jumbotron jumbotron-fluid shadow header mb-1" style={img}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 pl-md-0">
+                            <form className="form-inline mt-3 w-100" onSubmit={this.onSubmit}>
+                                <div className="input-group col-md-6 mb-3 pl-md-0">
+                                    <input type="text" className="form-control" placeholder="Search Recipes..." aria-label="Recipient's username" aria-describedby="button-addon2"  
+                                        onChange={this.onChange} value={this.state.name}/>
+                                    <div className="input-group-append">
+                                         <button className="btn btn-outline-success" type="submit" id="button-addon2"><i className="fas fa-search"></i> Search</button>
+                                    </div>  
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         );
+    }
+}
+ 
 export default Header;
