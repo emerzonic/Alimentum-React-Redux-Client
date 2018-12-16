@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Component
 } from 'react';
-import './home.css';
+import './user.css';
 
 
 class Login extends Component {
@@ -25,25 +25,22 @@ class Login extends Component {
 
 render() {
     return (
-        <form id="signinForm" className="ui form" onSubmit={this.handleSubmit}>
-        <h3>Sign In</h3>
-        <div className="ui divider"></div>
-        <div className="required field">
-        <label>Username</label>
-            <div className="ui left icon input"> <i className="user icon"></i>
-            <input name="username" placeholder="Username" type="text" autoComplete="off"/>
+        <div className="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+        <form className="p-md-5 mb-5 shadow-sm border rounded">
+            <h1 className="card-title">Login</h1>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Username</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username"/>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
-        </div>
-          <div className="required field">
-            <label>Password</label>
-            <div className="ui left icon input"><i className="lock icon"></i>
-          <input type="password" name="password" placeholder="Password"/>
-        </div>
-          </div>
-        <button type="submit" className="ui orange button">Submit</button>
-        <div className="ui error message"></div>
-      </form>
-
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password"/>
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
     );
 }
 }
