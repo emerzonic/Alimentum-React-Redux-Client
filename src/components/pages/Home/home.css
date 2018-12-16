@@ -1,19 +1,12 @@
+:root {
+    /* font-size: 16px; */
+    --main-theme-color: rgb(6, 156, 6);
+    --main-theme-font: 'Bree Serif', serif;
+    /* --main-theme-color: #EE6201;   */
+}
+
 body{
     background-color: rgb(244, 247, 245);
-}
-
-.navbar-light .navbar-nav .nav-link{
-    font-family: 'Bree Serif', serif;
-    font-size: 1.5rem;
-    color:#ffffff
-}
-
-.navbar-light .navbar-brand{
-    font-family: 'Bree Serif', serif;
-    font-size: 1.5rem;
-    color:green;
-    font-weight: bold;
-    letter-spacing: 0.5rem;
 }
 
 .category-div .card-img-top{
@@ -26,7 +19,7 @@ body{
 
 .recipe-div .card-img-top:hover{
     opacity: 0.9;
-    border:0.3rem solid green;
+    border:0.3rem solid var(--main-theme-color); 
     cursor: pointer;
 }
 
@@ -42,13 +35,11 @@ body{
     border:none;
 }
 
-.nav{
-    background: #eaedef;
-}
+
 
 .category-title, .recipe-title, .card-title{
-    font-family: 'Bree Serif', serif;
-    color:green;
+    font-family:var(--main-theme-font); 
+    color:var(--main-theme-color); 
 }
 
 .category-div:hover{
@@ -97,8 +88,8 @@ body{
     font-size: 3rem;
     text-align: center;
     letter-spacing: 0.3rem;
-    color: green;
-    font-family: 'Bree Serif', serif;
+    color: var(--main-theme-color);
+    font-family: var(--main-theme-font); 
     z-index: 1;
     position: relative;
 }
