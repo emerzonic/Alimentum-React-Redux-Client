@@ -1,3 +1,5 @@
+// import axios from "axios";
+
 export default {
 
     getRecipeObj: (rawObj) => {
@@ -39,5 +41,5 @@ export default {
             array.push(obj[key]);
         }
         return array;
-    }
+    },
 }
