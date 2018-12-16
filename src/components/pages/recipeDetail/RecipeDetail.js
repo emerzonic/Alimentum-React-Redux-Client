@@ -2,6 +2,7 @@ import React from 'react';
 import  {Component} from 'react';
 import Modal from '../../sections/Modal';
 import Header from '../../sections/Header';
+import PageHeader from '../../sections/Page Header';
 import axios from 'axios';
 import util from '../../util';
 import '../home/home.css';
@@ -12,7 +13,7 @@ class recipe extends Component {
         super(props);
         this.state = { 
             recipe:[],
-            pageTitle:"",
+            pageTitle:"Recipe Detail",
             saveFeedBack:"",
             unsaveFeedBack:"",
             name:""
@@ -23,7 +24,6 @@ class recipe extends Component {
         axios.get(`http://localhost:5000/searchByRecipeId/${recipeId}`).then(res => {
         let refinedRecipe = util.getRecipeObj(res.data[0]);
             this.setState({
-                pageTitle:'',
                 recipe:refinedRecipe
             })
         }).catch(err => console.log(err));
@@ -53,11 +53,12 @@ class recipe extends Component {
     }
   render() {
       return <div>
-                <Header state={this.state} onChange={this.onChange} onSubmit={this.onSubmit}/>
-                <div className="container">
+                <Header {...this.props} state={this.state}/>
+                <PageHeader {...this.props} state={this.state}/>
+                <div className="container px-0 my-2">
                  <div className="card mb-3 recipe-detail-div border-0 shadow-sm p-md-4">
                 <div className="row">
-                      <div className="col-md-8">
+                      <div className="col-md-8 pl-0">
                           <img className="card-img-top img-fluid rounded ml-md-4" src={this.state.recipe.strMealThumb} alt={this.props.name}/>
                       </div>
                       <div className="col-md-4">
@@ -73,7 +74,7 @@ class recipe extends Component {
                           </div>
                       </div>
                       <div className="row">
-                          <div className="col-md-8">
+                          <div className="col-md-8 pl-0">
                           <h5 className="card-title">Instructions</h5>
                           <ul className="card-text bg-light p-4">
                                 {this.state.recipe.strInstructions?
