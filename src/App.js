@@ -3,7 +3,7 @@ import React from "react";
 import Nav from "./components/sections/Nav";
 import Home from "./components/pages/home/Home";
 import Footer from "./components/sections/Footer";
-import UserForm from "./components/pages/user/UserForm";
+import User from "./components/pages/user/User";
 import Results from "./components/pages/search/Results";
 import Recipes from "./components/pages/recipes/Recipes";
 import Category from "./components/pages/category/Category";
@@ -22,7 +22,7 @@ const App = () => (
         <Route exact path="/categories/:category/:recipeId" component={RecipeDetail}/>
         <Route exact path="/search/results" component={Results}/> 
         <Route exact path="/user/favorites" component={Favorites}/>
-        <Route exact path="/user/loginOrSignup" component={UserForm}/>
+        <Route exact path="/user/loginOrSignup" component={User}/>
       </div>
       <Footer/>
     </div>
