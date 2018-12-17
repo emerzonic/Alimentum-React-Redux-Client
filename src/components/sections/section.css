@@ -1,10 +1,10 @@
-.nav-link{
+#navbarNavDropdown .nav-link{
   font-family: var(--main-theme-font); 
   font-size: 1.3rem;
   color:#ffffff
 }
 
-.nav-link:hover{
+#navbarNavDropdown .nav-link:hover{
   color:var(--main-theme-color); 
   border-bottom:0.1rem solid var(--main-theme-color); 
 }
@@ -48,6 +48,13 @@ p.ex1 {
     font-size: 0.9rem;
   }
 
-  .nav{
-    background: #242524;
+  .user-form .nav{
+    background: var(--main-theme-color);
+    color:#ffffff;
+}
+
+.user-form .nav-link{
+  color:#ffffff;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
