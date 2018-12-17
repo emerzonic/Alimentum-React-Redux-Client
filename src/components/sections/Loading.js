@@ -1,11 +1,19 @@
 import React from 'react';
-import Img from '../../assets';
 import '../pages/home/home.css';
+// import Img from "../../assets"
+
+
+
+// let img = {
+//     backgroundImage: 'url(' + Img.loadingImg.isloading + ')',
+//     backgroundRepeat:"no-repeat",
+//     backgroundSize:"cover"
+//   };
 
 const Loading = () => (
-                <div className="col-md-6 mx-auto">
-                    <div className="card bg-transparent border-0">
-                        <img className="card-img" src={Img.loadingImg.isloading} alt="Card"/>
+                <div className="col-12">
+                    <div className="p-5">
+                        <h1 className="display-4 mt-5 text-center">Loading...</h1>
                     </div>
                 </div>
 );
