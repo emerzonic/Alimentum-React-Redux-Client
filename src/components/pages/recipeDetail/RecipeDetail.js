@@ -55,7 +55,7 @@ class recipe extends Component {
       return <div>
                 <Header {...this.props} state={this.state}/>
                 <PageHeader {...this.props} state={this.state}/>
-                <div className="container px-0 my-2">
+                <div className="container px-0 my-2 items-container" >
                  <div className="card mb-3 recipe-detail-div border-0 shadow-sm p-md-4">
                 <div className="row">
                       <div className="col-md-8 pl-0">
@@ -96,7 +96,7 @@ class recipe extends Component {
                         </div>
                     </div>
                   </div>
-            </div>
+                </div>
             </div>
         <Modal recipe={this.state.recipe}/>                  
     </div>
