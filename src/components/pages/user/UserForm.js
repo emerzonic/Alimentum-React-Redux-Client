@@ -9,7 +9,7 @@ const UserForm = (props) => (
     <Header {...props}/>
     <div className="container">
         <div className="row">
-            <div className="col-md-6 col-sm-12 mx-auto">
+            <div className="col-md-6 col-sm-12 mx-auto user-form">
                 <ul className="nav nav-tabs mt-5" id="myTab" role="tablist">
                     <li className="nav-item w-50">
                         <a className="nav-link active text-center" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Login</a>
@@ -19,8 +19,8 @@ const UserForm = (props) => (
                     </li>
                 </ul>
                     <div className="tab-content" id="myTabContent">
-                        <Login {...props}/>
-                        <SignUp {...props}/>
+                        <Login {...props} loginChange={props.loginChange}/>
+                        <SignUp {...props} signUpChange={props.signUpChange}/>
                     </div>
                 </div>
         </div>
