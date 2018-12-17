@@ -22,16 +22,17 @@ class  Home extends Component {
 
     render() { 
         return (
-            <div>
+            <div className="home-div bg-dark" style={img}>
                 <div className="row">
                     <div className="col-md-12">
                         <h1 className="home-title">ALIMENTUM</h1>
+                        <h4 className="home-text">Where Food is Life</h4>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row px-md-5 px-sm-2">
                     {this.state.cards.map((card,i)=>
                         <div className="col-md-3" key={i}>
-                            <div className="card bg-dark text-white my-3 text-center home-page-cards" 
+                            <div className="card bg-dark text-white my-3 text-center home-page-cards border-0" 
                                  onClick={()=>this.props.history.push(card.url)}>
                                 <img className="card-img home-page-img" src={card.image} alt="Card"/>
                                 <div className="card-img-overlay">
@@ -41,6 +42,8 @@ class  Home extends Component {
                             </div>                            
                         </div>                            
                     )}
+                </div>
+                <div className="pusher">
                 </div>
         </div>
          );
