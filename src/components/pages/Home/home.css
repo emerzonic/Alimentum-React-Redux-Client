@@ -57,8 +57,9 @@ body{
 
 .home-page-cards{
     cursor: pointer;
-    transition:ease-in-out 3s; 
+    transition: all 0.7s ease;  
 }
+
 
 .page-links, .home-page-icons {
     opacity:0;
@@ -86,6 +87,17 @@ body{
 .home-title{
     padding: 2rem;
     font-size: 3rem;
+    text-align: center;
+    letter-spacing: 0.3rem;
+    color: var(--main-theme-color);
+    font-family: var(--main-theme-font); 
+    z-index: 1;
+    position: relative;
+}
+
+.home-text{
+    /* padding: 1rem; */
+    font-size: 1.5rem;
     text-align: center;
     letter-spacing: 0.3rem;
     color: var(--main-theme-color);
@@ -166,3 +178,7 @@ body{
   /* .no-cssanimations .slideshow li {
       opacity: 1;
   } */ 
+
+  .pusher{
+      height:20rem;
+  }
