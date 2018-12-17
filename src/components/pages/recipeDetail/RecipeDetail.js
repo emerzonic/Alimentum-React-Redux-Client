@@ -32,7 +32,7 @@ class recipe extends Component {
     this.saveRecipe = () =>{  
         let recipe = this.state.recipe;
         let username = "emerson";
-        axios.post(`http://localhost:5000/saveRecipe/${username}`, recipe).then(res => {
+        axios.post(`http://localhost:5000/currentUser/saveRecipe/${username}`, recipe).then(res => {
             let save = "";
             let unsave = "";
             if(res.data === "success"){
