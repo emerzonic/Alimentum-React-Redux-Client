@@ -6,6 +6,7 @@ import util from '../../util';
 import '../home/home.css';
 import PageHeader from '../../sections/Page Header';
 
+
 class  Category extends Component {
     constructor(props) {
         super(props);
@@ -16,18 +17,21 @@ class  Category extends Component {
             pageTitle:"",
             saveFeedBack:"",
             unsaveFeedBack:"",
-            name:""
+            name:"",
+            isLoading:true
         }
 
      this.state.categories = util.getDataArray(assets.category); 
      this.state.pageTitle = "Categories";
+     this.state.isLoading = false;
+
 }
     render() { 
         return (
             <div>
                 <Header {...this.props} state={this.state}/>
                 <PageHeader {...this.props} state={this.state}/>
-                    <div className="container">
+                    <div className="container items-container">
                         <div className="row">
                         {this.state.categories.map((item, i) => {
                             return <div className="card col-md-4 my-2 border-0 shadow-sm category-div" key={i}>
