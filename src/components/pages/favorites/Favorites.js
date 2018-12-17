@@ -23,20 +23,9 @@ class  Favorites extends Component {
             exception:""
         }
 
-        this.onClick = (event) => {
-            let type = event.target.getAttribute("data-type");
-            let id = event.target.getAttribute("data-id");
-            console.log(type +" "+ id)
-            type === "delete"?
-                this.deleteRecipe(id):
-            type === "detail"?
-                this.getRecipeById(id):
-            console.log("no param");
-        };
-
     this.getUserRecipes = () =>{  
         let username = "emerson";
-        axios.get(`http://localhost:5000/getUserRecipes/${username}`).then(res => {
+        axios.get(`http://localhost:5000/currentUser/getUserRecipes/${username}`).then(res => {
         if(!res || res.data==="exception"){
             this.setState({
                 exception: "exception",
@@ -50,9 +39,10 @@ class  Favorites extends Component {
     };
 
 
-    this.deleteRecipe = (id) =>{  
+    this.deleteRecipe = (event) =>{  
+        let id = event.target.getAttribute("data-id");
         let username = "emerson";
-        axios.get(`http://localhost:5000/deleteRecipe/${username}/${id}`).then(res => {
+        axios.get(`http://localhost:5000/currentUser/deleteRecipe/${username}/${id}`).then(res => {
                 this.getUserRecipes();
         }).catch(err => console.log(err));
     };
@@ -70,7 +60,10 @@ componentDidMount(){
                     <div className="row">
                         <div className="col-12">
                         {this.state.recipes.length?
-                            <FavoriteRecipes state={this.state} onClick={this.onClick} history={this.props.history}/>:
+                            <FavoriteRecipes state={this.state} 
+                                             onClick={this.onClick} 
+                                             deleteRecipe={this.deleteRecipe} 
+                                             history={this.props.history}/>:
                             <Loading/>
                         } 
                         </div>
