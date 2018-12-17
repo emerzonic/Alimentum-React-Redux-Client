@@ -37,10 +37,18 @@ p.ex1 {
     border-bottom: 0.5rem solid var(--main-theme-color);
   }
 
-  .page-title{
+  .page-title-div{
     background-color: #ffffff;
+    padding:2rem;
+  }
+
+  .page-title{
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    font-family:var(--main-theme-font); 
+  }
+
+  .back-button{
     font-family:var(--main-theme-font); 
   }
 
