@@ -56,9 +56,6 @@ const assets = {
   errorImg: {
     error: require('./images/error2.gif')
   },
-  loadingImg: {
-    isloading: require('./images/loading.gif')
-  },
   homeCardsObj: {
     card1: {
       image: require('./images/beef.jpg'),
