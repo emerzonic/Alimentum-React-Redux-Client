@@ -25,6 +25,7 @@ class  Header extends Component {
         e.preventDefault();
         let name = this.state.name;
         axios.get(`http://localhost:5000/searchByName/${name}`).then(res => {
+            if(res.data){
             this.props.history.push({
                 pathname: '/search/results',
                 state: { 
@@ -32,6 +33,16 @@ class  Header extends Component {
                     pageTitle: name
                 }
               })
+            }else{
+                this.props.history.push({
+                    pathname: '/search/results',
+                    state: { 
+                        recipes: "",
+                        pageTitle: name
+                    }
+                  })
+
+            }
     }).catch(err => console.log(err));
     };
 }
