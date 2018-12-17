@@ -180,5 +180,9 @@ body{
   } */ 
 
   .pusher{
-      height:20rem;
+      height:30rem;
   }
+
+  .items-container{
+    min-height: 30rem;
+}
