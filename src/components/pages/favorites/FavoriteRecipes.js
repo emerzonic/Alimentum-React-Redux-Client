@@ -13,8 +13,8 @@ class FavoriteRecipes extends Component {
                     <h5 className="mt-0 card-title">{item.strMeal}</h5>
                     <div className="mb-2">
                     </div>
-                    <button type="button" className="btn btn-outline-danger  m-1" data-id={item.id} data-type="delete" 
-                            onClick={this.props.onClick}> <i className="fas fa-trash-alt"></i> Delete</button>
+                    <button type="button" className="btn btn-outline-danger  m-1" data-id={item.id}
+                            onClick={this.props.deleteRecipe}> <i className="fas fa-trash-alt"></i> Delete</button>
                     <button type="button" className="btn btn-outline-success m-1" data-id={item.id} 
                             onClick={()=>this.props.history.push(`/categories/${item.strCategory}/${item.idMeal}`)}><i className="fas fa-clipboard-list"></i> See Detail</button>
                 </div>
