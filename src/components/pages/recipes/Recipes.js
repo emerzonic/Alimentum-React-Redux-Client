@@ -4,6 +4,8 @@ import axios from 'axios';
 import '../home/home.css';
 import Header from "../../sections/Header";
 import PageHeader from '../../sections/Page Header';
+import Loading from '../../sections/Loading';
+
 
 
 
@@ -13,6 +15,7 @@ class Recipes extends Component {
     this.state = { 
         recipes:[],
         pageTitle:"",
+        isLoading:true
 
     }
 
@@ -22,6 +25,7 @@ this.getRecipesByCategory = () =>{
         this.setState({
             recipes: res.data,
             pageTitle:param +" Recipes",
+            isLoading:false
         })
     ).catch(err => console.log(err));
   };
@@ -37,8 +41,9 @@ componentDidMount(){
         <div>
             <Header {...this.props} state={this.state}/>
             <PageHeader {...this.props} state={this.state}/>
-            <div className="container">
+            <div className="container items-container">
                       <div className="row">
+                      {this.state.isLoading?<Loading/>:""}
                         {this.state.recipes.map(item => 
                           <div className="card col-md-4 my-2 border-0 shadow-sm recipe-div" key={item.idMeal}>
                             <img className="card-img-top rounded-circle mt-3"  
