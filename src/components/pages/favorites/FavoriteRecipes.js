@@ -18,7 +18,6 @@ class FavoriteRecipes extends Component {
                     <button type="button" className="btn btn-outline-success m-1" data-id={item.id} 
                             onClick={()=>this.props.history.push(`/categories/${item.strCategory}/${item.idMeal}`)}><i className="fas fa-clipboard-list"></i> See Detail</button>
                 </div>
-                <hr/>
             </div>
         });
     return (
