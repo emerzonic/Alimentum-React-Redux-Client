@@ -9,23 +9,6 @@ body{
     background-color: rgb(244, 247, 245);
 }
 
-.category-div .card-img-top{
-    height:15rem;
-}
-
-.recipe-div .card-img-top{
-    height:21rem;
-}
-
-.recipe-div .card-img-top:hover{
-    opacity: 0.9;
-    border:0.3rem solid var(--main-theme-color); 
-    cursor: pointer;
-}
-
-.recipe-detail-div .card-img-top{
-    height:30rem;
-}
 
 .display-4{
     font-size:2.5rem;
@@ -35,20 +18,9 @@ body{
     border:none;
 }
 
-
-
 .category-title, .recipe-title, .card-title{
     font-family:var(--main-theme-font); 
     color:var(--main-theme-color); 
-}
-
-.category-div:hover{
-
-    
-}
-
-.media .img-fluid{
-    max-width: 10rem;
 }
 
 .alert{
@@ -60,17 +32,14 @@ body{
     transition: all 0.7s ease;  
 }
 
-
 .page-links, .home-page-icons {
     opacity:0;
     color:#ffffff;
-  
 }
 
 .home-page-icons {
     font-size: 3rem;
 }
-
 
 .home-page-cards:hover .card-img {
     opacity: 0.1;
@@ -91,19 +60,14 @@ body{
     letter-spacing: 0.3rem;
     color: var(--main-theme-color);
     font-family: var(--main-theme-font); 
-    z-index: 1;
-    position: relative;
 }
 
 .home-text{
-    /* padding: 1rem; */
     font-size: 1.5rem;
     text-align: center;
     letter-spacing: 0.3rem;
     color: var(--main-theme-color);
     font-family: var(--main-theme-font); 
-    z-index: 1;
-    position: relative;
 }
 
 
