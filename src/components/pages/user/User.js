@@ -6,122 +6,95 @@ import {
 // import './home.css';
 import UserForm from "./UserForm"
 import axios from 'axios';
+import './user.css';
 
 
 class User extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            newUser:{
-                password: '',
-                username: ''
-            },
-            user:{
-                password: '',
-                username: ''
-            },
-        };
+        this.state={
+            serverResponse:"",
+            userform:""
+        }
 
-        this.handleSignUpInputChange = (e) => {
-            let target = e.target;
-            let value = target.value;
-            let name  = target.name;
+        this.setUserForm = ()=>{
+            let form = this.props.match.params.form;
             this.setState({
-                newUser:{
-                    [name]:value}
+                userform:form
             })
         }
 
-        this.handleLoginInputChange = (e) => {
-            let target = e.target;
-            let value = target.value;
-            let name  = target.name;
-            this.setState({
-                user:{
-                    [name]:value}
-            })
+        this.handleSubmit = (user, requestType) => {
+            console.log(user)
+            requestType === "signUp" ? this.createNewUser(user) : this.loginUser(user);
         }
 
-        this.handleSubmit = e =>{
-            e.preventDefault();
-            let user = {
-                // fullName: e.target.fullName.value,
-                username: e.target.username.value,
-                password: e.target.password.value
-            };
-            console.log(user);
-            if(!user.password.length ||!user.password.length){ 
-              return;
-          }else{
-            let requestType = e.target.getAttribute("request-type");
-              if(requestType==="signUp"){
-                this.createNewUser(user);
-              }else{
-                this.loginUser(user);
-              }
-            }
-          }
 
         this.createNewUser = (newUser) => {
-            axios.post("http://localhost:5000/user/signup", newUser).then(res => {
+            axios.post("http://localhost:5000/api/users/signup", newUser).then(res => {
                 console.log(res);
-                // if (res.data.username) {
-                //     localStorage.setItem('erapp_user', res.data.username)
-                //     localStorage.setItem('erapp_id', res.data._id)
-                //     this.setState({
-                //         user: {
-                //             id: res.data._id,
-                //             username: localStorage.getItem('erapp_user')
-                //         }
-                //     })
-                //     this.props.history.push('/search');
-                // } else {
-                //     this.props.history.push('/signup');
-                // }
+                if (res.data.type !== "failed") {
+                    // localStorage.setItem('erapp_user', res.data.username)
+                    // localStorage.setItem('erapp_id', res.data._id)
+                    // this.setState({
+                    //     user: {
+                    //         id: res.data._id,
+                    //         username: localStorage.getItem('erapp_user')
+                    //     }
+                    // })
+                    return this.props.history.push('/users/login');
+                } else {
+                    this.setState({
+                        serverResponse:res.data.text
+                    })
+                }
             }).catch(err => console.log(err));
         }
 
         this.loginUser = (User) => {
-            axios.post("http://localhost:5000/login", User).then(res => {
-                if (res.data.username) {
-                    //             localStorage.setItem('erapp_user', res.data.username)
-                    //             localStorage.setItem('erapp_id', res.data._id)
-                    //             this.setState({
-                    //                 user: {
-                    //                     id: res.data._id,
-                    //                     username: localStorage.getItem('erapp_user')
-                    //                 }
-                    //             })
-                    //             this.props.history.push('/search');
-                    //         } else {
-                    //             this.props.history.push('/login');
-                            }
+            axios.post("http://localhost:5000/api/users/login", User).then(res => {
+                console.log(res);
+                if (res.data.success) {
+                    // localStorage.setItem('erapp_user', res.data.username)
+                    // localStorage.setItem('erapp_id', res.data._id)
+                    // this.setState({
+                    //     user: {
+                    //         id: res.data._id,
+                    //         username: localStorage.getItem('erapp_user')
+                    //     }
+                    // })
+                    return this.props.history.push("/");
+                } else {
+                    return this.props.history.push("/");
+                }
             }).catch(err => console.log(err));
 
         }
         //This method handle user signout
-    //     this.handleUserSignout= (action) => {
-    //         if(action === "positive"){
-    //         localStorage.removeItem('erapp_id');
-    //         localStorage.removeItem('erapp_user');
-    //         localStorage.removeItem('erapp_articles');
-    //         this.props.history.push('/');
-    //         }else{
-    //         this.props.history.goBack();
-    //         }
-    //     }
+        //     this.handleUserSignout= (action) => {
+        //         if(action === "positive"){
+        //         localStorage.removeItem('erapp_id');
+        //         localStorage.removeItem('erapp_user');
+        //         localStorage.removeItem('erapp_articles');
+        //         this.props.history.push('/');
+        //         }else{
+        //         this.props.history.goBack();
+        //         }
+        //     }
 
     }
 
+    componentDidMount(){
+        this.setUserForm();
+    }
+
+
     render() {
-console.log(this.state);
-        return (
-            <div>
-            <UserForm onSubmit={this.handleSubmit} 
-                      signUpChange={this.handleSignUpInputChange}
-                      loginChange={this.handleLoginInputChange}
-                      state={this.state} />
-        </div>
+        return ( <div>
+                    <UserForm onSubmit = {this.handleSubmit} 
+                              serverResponse={this.state.serverResponse}
+                              form={this.state.userform}/> 
+                </div>
         );
     }
 }
