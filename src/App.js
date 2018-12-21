@@ -22,7 +22,7 @@ const App = () => (
         <Route exact path="/categories/:category/:recipeId" component={RecipeDetail}/>
         <Route exact path="/search/results" component={Results}/> 
         <Route exact path="/user/favorites" component={Favorites}/>
-        <Route exact path="/user/loginOrSignup" component={User}/>
+        <Route exact path="/user/:form" component={User}/>
       </div>
       <Footer/>
     </div>
