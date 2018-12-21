@@ -1,3 +1,13 @@
 .items-container{
     min-height: 30rem;
 }
+
+.recipe-div .card-img-top{
+    height:21rem;
+}
+
+.recipe-div .card-img-top:hover{
+    opacity: 0.9;
+    border:0.3rem solid var(--main-theme-color); 
+    cursor: pointer;
+}
