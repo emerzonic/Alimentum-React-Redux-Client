@@ -1,6 +1,8 @@
 import React from 'react';
 import  {Component} from 'react';
 import '../home/home.css';
+import "./favorite.css";
+
 
 
 class FavoriteRecipes extends Component {
