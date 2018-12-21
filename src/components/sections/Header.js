@@ -24,7 +24,7 @@ class  Header extends Component {
     this.onSubmit = (e) => {
         e.preventDefault();
         let name = this.state.name;
-        axios.get(`http://localhost:5000/searchByName/${name}`).then(res => {
+        axios.get(`http://localhost:5000/api/searchByName/${name}`).then(res => {
             if(res.data){
             this.props.history.push({
                 pathname: '/search/results',
