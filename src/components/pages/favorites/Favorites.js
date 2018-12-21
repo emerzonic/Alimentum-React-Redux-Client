@@ -49,7 +49,7 @@ class  Favorites extends Component {
     this.deleteRecipe = (event) =>{  
         let id = event.target.getAttribute("data-id");
         let username = "emerson";
-        axios.get(`http://localhost:5000/currentUser/deleteRecipe/${username}/${id}`).then(res => {
+        axios.delete(`http://localhost:5000/currentUser/deleteRecipe/${username}/${id}`).then(res => {
                 this.getUserRecipes();
         }).catch(err => console.log(err));
     };
@@ -72,9 +72,7 @@ componentDidMount(){
                                              onClick={this.onClick} 
                                              deleteRecipe={this.deleteRecipe} 
                                              history={this.props.history}/>:""
-                           
                         } 
-                       
                         </div>
                     </div>
                 </div>:
