@@ -13,11 +13,6 @@ const PageHeader = (props) => (
                                 <div className="alert alert-success save-feedback d-md-inline ml-md-5" role="alert">
                                 <i className="fas fa-check mr-2"></i>
                                     {props.state.saveFeedBack}
-                                </div>:
-                                props.state.unsaveFeedBack?
-                                <div className="alert alert-info save-feedback d-md-inline ml-md-5" role="alert">
-                                <i className="fas fa-times mr-2"></i>
-                                    {props.state.unsaveFeedBack}
                                 </div>:""
                             }                         
                          </h1>
