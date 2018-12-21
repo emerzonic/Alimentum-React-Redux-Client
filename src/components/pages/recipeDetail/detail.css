@@ -1,3 +1,23 @@
 .items-container{
     min-height: 30rem;
 }
+
+.recipe-detail-div .card-img-top{
+    height:30rem;
+}
+
+.list-group-item{
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    text-decoration-style: none;
+}
+
+.card-img:hover{
+    cursor: pointer;
+
+}
+
+.youtube:hover{
+    cursor: pointer;
+
+}
