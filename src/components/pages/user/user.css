@@ -1,0 +1,44 @@
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+ color:rgb(243, 245, 243);
+ background-color: var(--main-theme-color);;
+ border-color:var(--main-theme-color);
+}
+
+.userForm .nav-link{
+    color:var(--main-theme-color);
+    border-color:var(--main-theme-color);
+}
+
+.userForm .nav-link:hover{
+    border-color:var(--main-theme-color);
+}
+
+.userForm .btn-primary{
+    color:rgb(243, 245, 243);
+    background-color: var(--main-theme-color);;
+    border-color:var(--main-theme-color);
+    box-shadow: none;
+    outline: none;
+}
+
+.userForm .btn-primary:active{
+    color:rgb(243, 245, 243);
+    background-color: var(--main-theme-color);;
+    border-color:var(--main-theme-color);
+}
+
+.text-muted{
+    color:#d63939!important;
+}
+
+.fa-exclamation-triangle{
+    font-size: 1.5rem;
+    color: #d63939;
+    margin-right:1rem;
+}
+
+.user-forms{
+    padding: 1rem 3rem 2rem 3rem;
+    margin-bottom: 5rem;
+}
+
