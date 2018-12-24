@@ -28,19 +28,19 @@ class  Login extends Component {
                 username: e.target.username.value,
                 password: e.target.password.value
             };
-            let usernameError = user.username.length ? false : true;
-            let passwordError = user.password.length ? false : true;
-            if(usernameError || passwordError){ 
-                this.setState({
-                        usernameError:usernameError,
-                        passwordError:passwordError
-                })
-              return;
-            }else{
+            // let usernameError = user.username.length ? false : true;
+            // let passwordError = user.password.length ? false : true;
+            // if(usernameError || passwordError){ 
+            //     this.setState({
+            //             usernameError:usernameError,
+            //             passwordError:passwordError
+            //     })
+            //   return;
+            // }else{
             let requestType = e.target.getAttribute("request-type");
             e.target.reset();
             this.props.onSubmit(user, requestType);
-            }
+            // }
         }
 }
     render() { 
