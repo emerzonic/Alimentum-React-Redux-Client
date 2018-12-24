@@ -12,6 +12,12 @@
     text-decoration-style: none;
 }
 
+ul {
+    list-style-type: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color:rgb(1, 29, 1);
+  }
 .card-img:hover{
     cursor: pointer;
 
@@ -19,5 +25,10 @@
 
 .youtube:hover{
     cursor: pointer;
+}
 
+.fa-check-square{
+    margin-right: 2rem;
+    font-size: 1.2rem;
+    color:var(--main-theme-color); 
 }
