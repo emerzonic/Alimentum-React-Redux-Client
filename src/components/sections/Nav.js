@@ -15,8 +15,8 @@ const Nav = () => (
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <a href="/categories" className="nav-link">Categories</a>
                     <a href="/user/favorites" className="nav-link">Favorites</a>
-                    <a href="/user/login" className="nav-link justify-self-end">Login</a>
-                    <a href="/user/signup" className="nav-link justify-self-end">Sign Up</a>
+                    <a href="/user-form/login" className="nav-link justify-self-end">Login</a>
+                    <a href="/user-form/signup" className="nav-link justify-self-end">Sign Up</a>
                     <a href="/" className="nav-link justify-self-end">Logout</a>
                 </div>
             </nav>
