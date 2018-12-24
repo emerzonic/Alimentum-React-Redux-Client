@@ -57,7 +57,7 @@ const assets = {
     error: require('./images/error2.gif')
   },
   youtube: {
-    img: require('./images/youtube.png')
+    img: require('./images/youtube.jpg')
   },
   homeCardsObj: {
     card1: {

@@ -10,8 +10,11 @@ import Category from "./components/pages/category/Category";
 import Favorites from "./components/pages/favorites/Favorites";
 import { BrowserRouter as Router, Route} from "react-router-dom";
 import RecipeDetail from "./components/pages/recipeDetail/RecipeDetail";
+import {Provider} from "react-redux";
+import store from "./store";
 
 const App = () => (
+  <Provider store={store}>
   <Router>
     <div>
     <Nav/>
@@ -19,14 +22,15 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path="/categories" component={Category}/>
         <Route exact path="/categories/:category" component={Recipes}/>
-        <Route exact path="/categories/:category/:recipeId" component={RecipeDetail}/>
-        <Route exact path="/search/results" component={Results}/> 
+        <Route exact path="/categories/:category/:recipe/:recipeId" component={RecipeDetail}/>
+        <Route exact path="/search/:searchTerm/results" component={Results}/> 
         <Route exact path="/user/favorites" component={Favorites}/>
-        <Route exact path="/user/:form" component={User}/>
+        <Route exact path="/user-form/:form" component={User}/>
       </div>
       <Footer/>
     </div>
   </Router>
+  </Provider>
 );
 
 export default App;
