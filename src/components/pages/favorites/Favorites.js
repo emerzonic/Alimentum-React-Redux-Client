@@ -26,8 +26,8 @@ class  Favorites extends Component {
         }
 
     this.getUserRecipes = () =>{  
-        let username = "emerson";
-        axios.get(`http://localhost:5000/currentUser/getUserRecipes/${username}`).then(res => {
+        let userId = 2;
+        axios.get(`http://localhost:5000/api/currentUser/getUserRecipes/${userId}`).then(res => {
             console.log(res.data)
         if(!res || res.data==="exception"){
             this.setState({
@@ -47,9 +47,9 @@ class  Favorites extends Component {
 
 
     this.deleteRecipe = (event) =>{  
-        let id = event.target.getAttribute("data-id");
-        let username = "emerson";
-        axios.delete(`http://localhost:5000/currentUser/deleteRecipe/${username}/${id}`).then(res => {
+        let recipeId = event.target.getAttribute("data-id");
+        let userId = 2;
+        axios.delete(`http://localhost:5000/api/currentUser/deleteRecipe/${userId}/${recipeId}`).then(res => {
                 this.getUserRecipes();
         }).catch(err => console.log(err));
     };
