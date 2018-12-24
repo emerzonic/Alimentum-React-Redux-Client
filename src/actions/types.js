@@ -1,0 +1,7 @@
+export const GET_ERRORS = "GET_ERRORS";
+export const GET_RECIPES = "GET_RECIPES";
+export const GET_CATEGORIES = "GET_CATEGORIES";
+export const GET_SAVE_FEEDBACK = "GET_SAVE_FEEDBACK";
+export const GET_RECIPE_BY_ID = "GET_RECIPE_BY_ID";
+export const GET_PAGE_TITLE = "GET_PAGE_TITLE";
+export const GET_CURRENT_USER_DATA = "GET_CURRENT_USER_DATA";
