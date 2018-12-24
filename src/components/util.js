@@ -14,8 +14,13 @@ export default {
                 measurement.push(rawObj[key]);
             }
         });
-
-        let instructions = rawObj.strInstructions.split('. ');
+        let instructions = [];
+        let instString = rawObj.strInstructions.split('. ');
+        instString.forEach((instr)=> {
+            var instr2 = instr.replace(/\n|\r/g, "");
+            let instr3 = instr2.replace(/\.\d+$/, ".");
+            instructions.push(instr3)
+        })
 
         let videoId = rawObj.strYoutube.split('v=', 2)[1];
         let youtubeUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
