@@ -46,7 +46,6 @@ class  SignUP extends Component {
           }
 }
     render() { 
-        console.log(this.state)
         return (
                 <div className={this.props.form==="signup"?"tab-pane fade show active":"tab-pane fade"} id="signup" role="tabpanel" aria-labelledby="signup-tab">
                         <form className="user-forms shadow-sm border rounded-bottom" onSubmit={this.handleSubmit} request-type="signUp">
