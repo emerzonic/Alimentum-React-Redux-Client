@@ -2,8 +2,12 @@ import React from 'react';
 import {Component} from 'react';
 import Img from '../../assets';
 import axios from 'axios';
+import { getRecipeBySearchTerm} from "../../actions/projectActions";
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 import '../pages/home/home.css';
 import './section.css';
+
 
 let img = {
     backgroundImage: 'url(' + Img.headerImg.header + ')',
@@ -23,30 +27,33 @@ class  Header extends Component {
 
     this.onSubmit = (e) => {
         e.preventDefault();
+        let history = this.props.history;
         let name = this.state.name;
-        axios.get(`http://localhost:5000/api/searchByName/${name}`).then(res => {
-            if(res.data){
-            this.props.history.push({
-                pathname: '/search/results',
-                state: { 
-                    recipes: res.data,
-                    pageTitle: name
-                }
-              })
-            }else{
-                this.props.history.push({
-                    pathname: '/search/results',
-                    state: { 
-                        recipes: "",
-                        pageTitle: name
-                    }
-                  })
+        this.props.getRecipeBySearchTerm(name, history)
+    //     axios.get(`http://localhost:5000/api/searchByName/${name}`).then(res => {
+    //         if(res.data){
+    //         this.props.history.push({
+    //             pathname: '/search/results',
+    //             state: { 
+    //                 recipes: res.data,
+    //                 pageTitle: name
+    //             }
+    //           })
+    //         }else{
+    //             this.props.history.push({
+    //                 pathname: '/search/results',
+    //                 state: { 
+    //                     recipes: "",
+    //                     pageTitle: name
+    //                 }
+    //               })
 
-            }
-    }).catch(err => console.log(err));
+    //         }
+    // }).catch(err => console.log(err));
     };
 }
     render() { 
+        console.log(this.state)
         return (
             <div className="jumbotron jumbotron-fluid shadow header mb-1" style={img}>
                 <div className="container">
@@ -69,4 +76,13 @@ class  Header extends Component {
     }
 }
  
-export default Header;
+Header.propTypes = {
+    getRecipeBySearchTerm:PropTypes.func.isRequired,
+    }
+  
+//   const mapStateToProps = state =>({
+//       errors:state.error,
+//       recipes:state.recipes,
+//       pageTitle:state.pageTitle
+//   })
+  export default connect(null,{getRecipeBySearchTerm}) (Header);
