@@ -5,16 +5,20 @@ import {
 
 // import './home.css';
 import UserForm from "./UserForm"
-import axios from 'axios';
+// import axios from 'axios';
 import './user.css';
-
+import { connect } from 'react-redux';
+import { createUser } from "../../../actions/projectActions";
+import { loginUser } from "../../../actions/projectActions";
+import PropTypes from "prop-types";
 
 class User extends Component {
     constructor(props) {
         super(props);
         this.state={
-            serverResponse:"",
-            userform:""
+            error:"",
+            userform:"",
+            // user:{}
         }
 
         this.setUserForm = ()=>{
@@ -25,51 +29,55 @@ class User extends Component {
         }
 
         this.handleSubmit = (user, requestType) => {
-            console.log(user)
-            requestType === "signUp" ? this.createNewUser(user) : this.loginUser(user);
+            const history = this.props.history;
+            if(requestType === "signUp"){
+                this.props.createUser(user, history) 
+            }else{
+                this.props.loginUser(user, history)
+            }
         }
 
+        
+        // this.props.createNewUser = (newUser, history) => {
+        //     axios.post("http://localhost:5000/api/users/signup", newUser).then(res => {
+        //         console.log(res);
+        //         if (res.data.type !== "failed") {
+        //             // localStorage.setItem('erapp_user', res.data.username)
+        //             // localStorage.setItem('erapp_id', res.data._id)
+        //             // this.setState({
+        //             //     user: {
+        //             //         id: res.data._id,
+        //             //         username: localStorage.getItem('erapp_user')
+        //             //     }
+        //             // })
+        //             return this.props.history.push('/user-form/login');
+        //         } else {
+        //             this.setState({
+        //                 serverResponse:res.data.text
+        //             })
+        //         }
+        //     }).catch(err => console.log(err));
+        // }
 
-        this.createNewUser = (newUser) => {
-            axios.post("http://localhost:5000/api/users/signup", newUser).then(res => {
-                console.log(res);
-                if (res.data.type !== "failed") {
-                    // localStorage.setItem('erapp_user', res.data.username)
-                    // localStorage.setItem('erapp_id', res.data._id)
-                    // this.setState({
-                    //     user: {
-                    //         id: res.data._id,
-                    //         username: localStorage.getItem('erapp_user')
-                    //     }
-                    // })
-                    return this.props.history.push('/users/login');
-                } else {
-                    this.setState({
-                        serverResponse:res.data.text
-                    })
-                }
-            }).catch(err => console.log(err));
-        }
+        //  this.loginUser = (User) => {
+        //      axios.post("http://localhost:5000/api/users/login", User).then(res => {
+        //         console.log(res);
+        //         if (res.data.success) {
+        //             // localStorage.setItem('erapp_user', res.data.username)
+        //             // localStorage.setItem('erapp_id', res.data._id)
+        //             // this.setState({
+        //             //     user: {
+        //             //         id: res.data._id,
+        //             //         username: localStorage.getItem('erapp_user')
+        //             //     }
+        //             // })
+        //             return this.props.history.push("/");
+        //         } else {
+        //             return this.props.history.push("/");
+        //         }
+        //     }).catch(err => console.error(err));
 
-        this.loginUser = (User) => {
-            axios.post("http://localhost:5000/api/users/login", User).then(res => {
-                console.log(res);
-                if (res.data.success) {
-                    // localStorage.setItem('erapp_user', res.data.username)
-                    // localStorage.setItem('erapp_id', res.data._id)
-                    // this.setState({
-                    //     user: {
-                    //         id: res.data._id,
-                    //         username: localStorage.getItem('erapp_user')
-                    //     }
-                    // })
-                    return this.props.history.push("/");
-                } else {
-                    return this.props.history.push("/");
-                }
-            }).catch(err => console.log(err));
-
-        }
+        // }
         //This method handle user signout
         //     this.handleUserSignout= (action) => {
         //         if(action === "positive"){
@@ -87,16 +95,31 @@ class User extends Component {
     componentDidMount(){
         this.setUserForm();
     }
-
-
     render() {
         return ( <div>
                     <UserForm onSubmit = {this.handleSubmit} 
                               serverResponse={this.state.serverResponse}
+                              history={this.props.history}
                               form={this.state.userform}/> 
                 </div>
         );
     }
 }
 
-export default User;
+
+User.propTypes = {
+    createUser:PropTypes.func.isRequired,
+    loginUser:PropTypes.func.isRequired,
+    errors:PropTypes.object,
+    userForm:PropTypes.string,
+    // user:PropTypes.object,
+}
+
+const mapStateToProps = state =>({
+    errors:state.error,
+    // user:state.user,
+
+})
+export default connect(mapStateToProps, {
+    createUser, loginUser
+})(User);
