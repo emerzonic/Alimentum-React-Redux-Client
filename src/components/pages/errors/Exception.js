@@ -1,6 +1,6 @@
 import React from 'react';
 import Img from '../../../assets';
-import '../home/home.css';
+import './error.css';
 
 
 let img = {
@@ -10,14 +10,14 @@ let img = {
   };
 
 const Exception = () => (
-        <div className="container-fluid m-0 p-0">
-            <div class="card col-md-4 mx-auto bg-transparent border-0">
-                <img class="card-img-top mt-5" src={Img.errorImg.error} alt="Card cap"/>
-                <div class="card-body">
-                    <h5 class="card-title text-danger text-center">Oops! Something is not quite right. Please try again.</h5>
-                    <a href="/" class="text-center">Go Home</a>
+        <div className="container m-0 p-0">
+            <div className="card col-md-4 mx-auto bg-transparent border-0">
+                <img className="card-img-top mt-5" src={Img.errorImg.error} alt="Card cap"/>
+                <div className="card-body">
+                    <a href="/" className="error-page-link text-center">Go Home</a>
                 </div>
             </div>
+            <p className="card-title error-text mb-5 pb-5"><i className="fas fa-exclamation-triangle"></i> Oops! Something is not quite right. Please try again.</p>
         </div>
 );
 
