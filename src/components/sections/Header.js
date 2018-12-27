@@ -1,19 +1,16 @@
 import React from 'react';
 import {Component} from 'react';
 import Img from '../../assets';
-import axios from 'axios';
 import { getRecipeBySearchTerm} from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import '../pages/home/home.css';
 import './section.css';
 
-
 let img = {
     backgroundImage: 'url(' + Img.headerImg.header + ')',
     backgroundRepeat:"no-repeat",
   };
-
 class  Header extends Component {
     constructor(props) {
         super(props);
@@ -30,30 +27,9 @@ class  Header extends Component {
         let history = this.props.history;
         let name = this.state.name;
         this.props.getRecipeBySearchTerm(name, history)
-    //     axios.get(`http://localhost:5000/api/searchByName/${name}`).then(res => {
-    //         if(res.data){
-    //         this.props.history.push({
-    //             pathname: '/search/results',
-    //             state: { 
-    //                 recipes: res.data,
-    //                 pageTitle: name
-    //             }
-    //           })
-    //         }else{
-    //             this.props.history.push({
-    //                 pathname: '/search/results',
-    //                 state: { 
-    //                     recipes: "",
-    //                     pageTitle: name
-    //                 }
-    //               })
-
-    //         }
-    // }).catch(err => console.log(err));
     };
 }
     render() { 
-        console.log(this.state)
         return (
             <div className="jumbotron jumbotron-fluid shadow header mb-1" style={img}>
                 <div className="container">
@@ -64,7 +40,7 @@ class  Header extends Component {
                                     <input type="text" className="form-control" placeholder="Search Recipes..." aria-label="Recipient's username" aria-describedby="button-addon2"  
                                         onChange={this.onChange} value={this.state.name}/>
                                     <div className="input-group-append">
-                                         <button className="btn btn-outline-success" type="submit" id="button-addon2"><i className="fas fa-search"></i> Search</button>
+                                         <button className="btn btn-success" type="submit" id="button-addon2"><i className="fas fa-search"></i> Search</button>
                                     </div>  
                                 </div>
                             </form>
