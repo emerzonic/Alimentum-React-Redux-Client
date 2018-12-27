@@ -8,6 +8,7 @@ import Loading from '../../sections/Loading';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import "./recipes.css";
+import Exception from '../errors/Exception';
 
 class Recipes extends Component {
 
@@ -20,14 +21,16 @@ componentDidMount(){
 
   render() {
     let category = this.props.match.params.category;
+    console.log()
       return ( 
         <div>
-            <Header/>
+            <Header  {...this.props}/>
             <PageHeader {...this.props}/>
             <div className="container items-container">
                       <div className="row">
-                      {!this.props.recipes.length?<Loading/>:""}
-                        {this.props.recipes.map(item => 
+                      {this.props.errors !== undefined?
+                      !this.props.recipes.length?<Loading/>:
+                        this.props.recipes.map(item => 
                           <div className="card col-md-4 my-2 border-0 shadow-sm recipe-div" key={item.idMeal}>
                             <img className="card-img-top rounded-circle mt-3"  
                                 data-type="name"
@@ -37,7 +40,7 @@ componentDidMount(){
                               <h5 className="card-title text-center">{item.strMeal}</h5>
                             </div>
                           </div>
-                        )}
+                        ):<Exception/>}
                   </div>
               </div>
           </div>
@@ -54,7 +57,7 @@ Recipes.propTypes = {
   }
 
 const mapStateToProps = state =>({
-    errors:state.error,
+    errors:state.errors,
     recipes:state.recipes,
     pageTitle:state.pageTitle
 })
