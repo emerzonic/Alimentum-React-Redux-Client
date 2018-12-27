@@ -1,17 +1,16 @@
-import React from 'react';
-import  {Component} from 'react';
-import Modal from '../../sections/Modal';
-import Header from '../../sections/Header';
-import PageHeader from '../../sections/Page Header';
-import Img from '../../../assets';
-// import axios from 'axios';
-// import util from '../../util';
-import PropTypes from "prop-types";
-import { connect } from 'react-redux';
-import { saveRecipe } from "../../../actions/projectActions";
-import { getRecipeById } from "../../../actions/projectActions";
 import { updatePageTitle } from "../../../actions/projectActions";
-
+import { getRecipeById } from "../../../actions/projectActions";
+import { saveRecipe } from "../../../actions/projectActions";
+import {GET_SAVE_FEEDBACK} from "../../../actions/types"
+import PageHeader from '../../sections/Page Header';
+import Header from '../../sections/Header';
+import Modal from '../../sections/Modal';
+import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import store from "../../../store";
+import Img from '../../../assets';
+import  {Component} from 'react';
+import React from 'react';
 import '../home/home.css';
 import "./detail.css";
 
@@ -22,60 +21,33 @@ let img = {
     height:"6rem"
   };
 class Recipe extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.props = { 
-    //         recipe:{}||[],
-    //         pageTitle:"",
-    //         saveFeedBack:"",
-    //         errors:{}
-    //     }
 
-    // this.getRecipeById = () =>{ 
-        // let recipeId = "52807";
-        
-
-        // axios.get(`http://localhost:5000/api/recipes/searchByRecipeId/${recipeId}`).then(res => {
-        // let refinedRecipe = util.getRecipeObj(res.data[0]);
-        //     this.setState({
-        //         recipe:refinedRecipe,
-        //         pageTitle:`Recipe Detail for "${refinedRecipe.strMeal}".`
-        //     })
-        // }).catch(err => console.log(err));
-    // };
-
-
-    saveRecipe = () =>{  
-        let recipe = this.props.recipe;
-        let userId = 2;
-        this.props.saveRecipe(recipe, userId)
-
-        // axios.post(`http://localhost:5000/api/currentUser/saveRecipe/${userId}`, recipe).then(res => {
-        //     this.setState({
-        //         saveFeedBack:res.data.text,
-        //     })            
-        // }).catch(err => console.log(err));
+    saveRecipe = () => { 
+        if(!this.props.currentUser.validToken){
+            this.props.history.push("/user-form/login")
+        } else{
+            let recipe = this.props.recipe;
+            const {id} = this.props.currentUser.user;
+            this.props.saveRecipe(recipe, id)
+        }
     };
-// }
-    // componentWillReceiveProps(nextProps){
-    //     // if (nextProps.errors) {
-    //         this.setState({
-    //             errors:nextProps.errors,
-    //             saveFeedBack:nextProps.saveFeedback,
-    //             recipe:nextProps.recipe
-    //         })
-    //     // }
-    // }
+
+    componentWillUnmount(){
+        store.dispatch({
+            type:GET_SAVE_FEEDBACK,
+            payload:{}
+        })    }
+
     componentDidMount(){
         let recipeId = this.props.match.params.recipeId;
         let recipe = this.props.match.params.recipe;
         this.props.getRecipeById(recipeId);
         this.props.updatePageTitle(recipe);
     }
+
   render() {
-      console.log(this.props)
       return <div>
-                <Header/>
+                <Header {...this.props}/>
                 <PageHeader {...this.props}/>
                 <div className="container px-0 my-2 items-container" >
                  <div className="card mb-3 recipe-detail-div border-0 shadow-sm p-md-4">
@@ -130,8 +102,9 @@ Recipe.propTypes = {
     getRecipeById:PropTypes.func.isRequired,
     updatePageTitle:PropTypes.func.isRequired,
     errors:PropTypes.object,
-    saveFeedBack:PropTypes.string,
+    saveFeedBack:PropTypes.object.isRequired,
     recipe:PropTypes.object,
+    currentUser:PropTypes.object,
     pageTitle:PropTypes.string.isRequired
 }
 
@@ -139,7 +112,11 @@ const mapStateToProps = state =>({
     errors:state.error,
     saveFeedBack:state.saveFeedBack,
     recipe:state.recipe,
+    currentUser:state.currentUser,
     pageTitle:state.pageTitle
 })
  
-export default connect(mapStateToProps,{saveRecipe,getRecipeById, updatePageTitle})(Recipe);
+export default connect(mapStateToProps,
+    {saveRecipe,
+    getRecipeById, 
+    updatePageTitle})(Recipe);
