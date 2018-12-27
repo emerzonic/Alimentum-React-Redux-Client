@@ -3,84 +3,83 @@ import { Component } from 'react';
 import FavoriteRecipes from "./FavoriteRecipes";
 import Exception from "../errors/Exception";
 import '../home/home.css';
-import axios from 'axios';
 import Loading from '../../sections/Loading';
 import Header from '../../sections/Header';
 import PageHeader from '../../sections/Page Header';
 import "./favorite.css";
-
-
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import store from "../../../store";
+import { 
+    getUserRecipes,
+    deleteRecipe, 
+    updatePageTitle 
+} from "../../../actions/projectActions";
 
 class  Favorites extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            categories:[],
-            recipes:[],
-            recipeDetail:{},
-            pageTitle:"",
-            deleteFeedBack:"",
-            name:"",
-            exception:"",
-            isLoading:true
-        }
 
-    this.getUserRecipes = () =>{  
-        let userId = 2;
-        axios.get(`http://localhost:5000/api/currentUser/getUserRecipes/${userId}`).then(res => {
-            console.log(res.data)
-        if(!res || res.data==="exception"){
-            this.setState({
-                exception: "exception",
-                isLoading:false
-            })
-        }else{
-            this.setState({
-                recipes: res.data,
-                isLoading:false,
-                pageTitle:res.data.length?"Your Favorites.":"You have not saved any recipe."
-
-            })
-        }
-        }).catch(err => console.log(err));
+    checkRecipes = () =>{ 
+        let favRecipe = store.getState().favoriteRecipes.length;
+        let pageTitle = favRecipe === 0 ? 
+            "You have not saved any recipe.":"Your Favorites.";
+        this.props.updatePageTitle(pageTitle);
     };
 
 
-    this.deleteRecipe = (event) =>{  
+    deleteRecipe = (event) =>{ 
         let recipeId = event.target.getAttribute("data-id");
-        let userId = 2;
-        axios.delete(`http://localhost:5000/api/currentUser/deleteRecipe/${userId}/${recipeId}`).then(res => {
-                this.getUserRecipes();
-        }).catch(err => console.log(err));
+        let {id} = this.props.currentUser.user;
+        this.props.deleteRecipe(recipeId, id);
+        this.checkRecipes();
     };
-}
-componentDidMount(){
-    this.getUserRecipes()
+
+componentWillMount(){
+    let {id} = this.props.currentUser.user;
+    this.props.getUserRecipes(id);
+    this.checkRecipes();
 }
     render() { 
         return (
             <div>
-            <Header {...this.props} state={this.state}/>
-            <PageHeader {...this.props} state={this.state}/>
-            {!this.state.exception?
+            <Header  {...this.props}/>
+            <PageHeader {...this.props}/>
                 <div className="container items-container shadow-sm my-2 rounded bg-white">
                     <div className="row">
                         <div className="col-12">
-                        {this.state.isLoading? <Loading/>:""}
-                        {this.state.recipes.length?
-                            <FavoriteRecipes state={this.state} 
+                        <div className="text-center text-success">{this.props.deleteFeedBack?this.props.deleteFeedBack.text:""}</div>
+                        {this.props.errors !== undefined?
+                            (this.props.favoriteRecipes.lenghth === 0 ? <Loading/>:
+                            <FavoriteRecipes favoriteRecipes={this.props.favoriteRecipes} 
                                              onClick={this.onClick} 
                                              deleteRecipe={this.deleteRecipe} 
-                                             history={this.props.history}/>:""
-                        } 
+                                             history={this.props.history}/>)
+                        :<Exception/>} 
                         </div>
                     </div>
-                </div>:
-                <Exception/> 
-            }    
+                </div>  
             </div>
          );
     }
 }
  
-export default Favorites;
+Favorites.propTypes = {
+    getUserRecipes:PropTypes.func.isRequired,
+    deleteRecipe:PropTypes.func.isRequired,
+    updatePageTitle:PropTypes.func.isRequired,
+    favoriteRecipes:PropTypes.array.isRequired,
+    pageTitle:PropTypes.string.isRequired,
+    deleteFeedBack:PropTypes.object,
+    errors:PropTypes.object,
+    currentUser:PropTypes.object.isRequired
+    }
+  
+  const mapStateToProps = state =>({
+    favoriteRecipes:state.favoriteRecipes,
+    pageTitle:state.pageTitle,
+    deleteFeedBack:state.deleteFeedBack,
+    errors:state.errors,
+    currentUser:state.currentUser
+  })
+
+
+export default connect(mapStateToProps,{getUserRecipes,deleteRecipe, updatePageTitle})(Favorites);
