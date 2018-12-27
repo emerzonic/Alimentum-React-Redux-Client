@@ -6,6 +6,7 @@
   "homepage": "https://emerzonic.github.io/Alimentum-version-2.0/",
   "dependencies": {
     "axios": "^0.18.0",
+    "jwt-decode": "^2.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-modal": "^3.6.1",
