@@ -1,31 +1,23 @@
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
- color:rgb(243, 245, 243);
- background-color: var(--main-theme-color);;
- border-color:var(--main-theme-color);
-}
 
-.userForm .nav-link{
-    color:var(--main-theme-color);
-    border-color:var(--main-theme-color);
-}
 
-.userForm .nav-link:hover{
-    border-color:var(--main-theme-color);
-}
-
-.userForm .btn-primary{
+.user-form .btn-primary{
     color:rgb(243, 245, 243);
     background-color: var(--main-theme-color);;
     border-color:var(--main-theme-color);
     box-shadow: none;
     outline: none;
+    font-weight: bold;
+    font-family:  var(--main-theme-font); 
+    letter-spacing: 0.1rem;
 }
 
-.userForm .btn-primary:active{
-    color:rgb(243, 245, 243);
-    background-color: var(--main-theme-color);;
-    border-color:var(--main-theme-color);
+.form-label{
+    font-weight: bold;
+    font-family:  var(--main-theme-font);
+    color:rgb(89, 90, 89); 
+
 }
+
 
 .text-muted{
     color:#d63939!important;
@@ -39,6 +31,35 @@
 
 .user-forms{
     padding: 1rem 3rem 2rem 3rem;
-    margin-bottom: 5rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+}
+
+.user-links{
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    text-decoration-style: none;
+    color:var(--main-theme-color);
+
+}
+
+
+.user-links:hover{
+    text-decoration: none;
+    text-decoration-style: none;
+    color:var(--main-theme-color);
+
+}
+
+.error-text{
+    color:red;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.logout-div{
+    min-height: 38rem;
+
 }
 
