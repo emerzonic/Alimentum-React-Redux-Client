@@ -1,3 +1,26 @@
 .items-container{
     min-height: 30rem;
 }
+
+
+.error-page-link{
+    font-weight: 400;
+    text-align: center;
+    font-family: var(--main-theme-font); 
+
+}
+
+.error-page-link:hover{
+    text-decoration-style: none;
+    text-decoration: none;
+}
+
+.error-text{
+    color:red;
+    text-align: center
+}
+
+.fa-exclamation-triangle{
+    font-size: 3rem;
+    color: red;
+}
