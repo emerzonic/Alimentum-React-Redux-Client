@@ -1,8 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import Img from "../../../assets"
-import assets from '../../../assets';
-import util from '../../util';
+import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import { getMenus } from "../../../actions/projectActions";
 
 
 
@@ -12,14 +13,10 @@ let img = {
     backgroundSize:"cover"
   };
 class  Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { 
-            cards:[],
-        }
-    this.state.cards = util.getDataArray(assets.homeCardsObj); 
-    } 
 
+    componentDidMount(){
+        this.props.getMenus();
+      }
     render() { 
         return (
             <div className="home-div bg-dark" style={img}>
@@ -30,7 +27,7 @@ class  Home extends Component {
                     </div>
                 </div>
                 <div className="row px-md-5 px-sm-2">
-                    {this.state.cards.map((card,i)=>
+                    {this.props.menus.map((card,i)=>
                         <div className="col-md-3" key={i}>
                             <div className="card bg-dark text-white my-3 text-center home-page-cards border-0" 
                                  onClick={()=>this.props.history.push(card.url)}>
@@ -50,4 +47,12 @@ class  Home extends Component {
     }
 }
  
-export default Home;
+Home.propTypes = {
+    getMenus:PropTypes.func.isRequired,
+    menus:PropTypes.array.isRequired,
+    }
+  
+  const mapStateToProps = state =>({
+      menus:state.menus,
+  })
+export default connect(mapStateToProps,{getMenus})(Home);
