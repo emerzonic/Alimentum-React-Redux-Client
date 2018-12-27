@@ -5,3 +5,10 @@
 .media .img-fluid{
     max-width: 10rem;
 }
+
+.fav-recipe{
+    border-radius:10px; 
+    background-color: rgb(243, 243, 241);
+    border-top-right-radius: 50px;
+    padding: 1.5rem 0.5rem;
+}
