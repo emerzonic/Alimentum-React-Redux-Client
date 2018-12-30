@@ -17,7 +17,7 @@ const Nav = (props) => (
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <a href="/categories" className="nav-link">Categories</a>
-                    <a href={props.currentUser.validToken?"/user/favorites":"/user-form/login"} className="nav-link">Favorites</a>
+                    <a href={"/user/favorites"} className="nav-link">Favorites</a>
                     {props.currentUser.validToken?
                     <a href="/logout" className="nav-link justify-self-end">Logout</a>
                     :""}
