@@ -1,5 +1,7 @@
 import React from 'react';
-import { Component } from 'react';
+import {
+    Component
+} from 'react';
 import FavoriteRecipes from "./FavoriteRecipes";
 import Exception from "../errors/Exception";
 import '../home/home.css';
@@ -8,37 +10,41 @@ import Header from '../../sections/Header';
 import PageHeader from '../../sections/Page Header';
 import "./favorite.css";
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
-import store from "../../../store";
-import { 
-    getUserRecipes,
-    deleteRecipe, 
-    updatePageTitle 
-} from "../../../actions/projectActions";
+import {connect} from 'react-redux';
+import {getUserRecipes,deleteRecipe,} from "../../../actions/recipeActions";
+import {updatePageTitle} from "../../../actions/appUtilActions";
+import {setRedirectMessage} from "../../../actions/alertsActions";
 
-class  Favorites extends Component {
+class Favorites extends Component {
 
-    checkRecipes = () =>{ 
-        let favRecipe = store.getState().favoriteRecipes.length;
-        let pageTitle = favRecipe === 0 ? 
-            "You have not saved any recipe.":"Your Favorites.";
-        this.props.updatePageTitle(pageTitle);
-    };
-
-
-    deleteRecipe = (event) =>{ 
-        let recipeId = event.target.getAttribute("data-id");
+    deleteRecipe = (event) => {
+        let recipeId = Number(event.target.getAttribute("data-id"));
         let {id} = this.props.currentUser.user;
         this.props.deleteRecipe(recipeId, id);
-        this.checkRecipes();
     };
 
-componentWillMount(){
-    let {id} = this.props.currentUser.user;
-    this.props.getUserRecipes(id);
-    this.checkRecipes();
-}
+    componentWillReceiveProps = (nextProps) => {
+      if(nextProps){
+        let pageTitle = this.props.favoriteRecipes.length?
+        "Your Favorites.":"You have not saved any recipe.";
+        this.props.updatePageTitle(pageTitle);
+      }
+    }
+    
+
+    componentWillMount() {
+        if (this.props.currentUser.validToken) {
+            let {
+                id
+            } = this.props.currentUser.user;
+            this.props.getUserRecipes(id);
+        } else {
+            this.props.setRedirectMessage(true, "view your saved recipes");
+            this.props.history.push("/user-form/login")
+        }
+    }
     render() { 
+        console.log(this.props)
         return (
             <div>
             <Header  {...this.props}/>
@@ -61,25 +67,31 @@ componentWillMount(){
          );
     }
 }
- 
-Favorites.propTypes = {
-    getUserRecipes:PropTypes.func.isRequired,
-    deleteRecipe:PropTypes.func.isRequired,
-    updatePageTitle:PropTypes.func.isRequired,
-    favoriteRecipes:PropTypes.array.isRequired,
-    pageTitle:PropTypes.string.isRequired,
-    deleteFeedBack:PropTypes.object,
-    errors:PropTypes.object,
-    currentUser:PropTypes.object.isRequired
+
+    Favorites.propTypes = {
+        getUserRecipes: PropTypes.func.isRequired,
+        deleteRecipe: PropTypes.func.isRequired,
+        updatePageTitle: PropTypes.func.isRequired,
+        setRedirectMessage: PropTypes.func.isRequired,
+        favoriteRecipes: PropTypes.array.isRequired,
+        pageTitle: PropTypes.string.isRequired,
+        deleteFeedBack: PropTypes.object,
+        errors: PropTypes.object,
+        currentUser: PropTypes.object.isRequired
     }
-  
-  const mapStateToProps = state =>({
-    favoriteRecipes:state.favoriteRecipes,
-    pageTitle:state.pageTitle,
-    deleteFeedBack:state.deleteFeedBack,
-    errors:state.errors,
-    currentUser:state.currentUser
-  })
+
+    const mapStateToProps = state => ({
+        favoriteRecipes: state.recipe.favoriteRecipes,
+        pageTitle: state.appUtil.pageTitle,
+        deleteFeedBack: state.alerts.deleteMessage,
+        errors: state.errors,
+        currentUser: state.currentUser
+    })
 
 
-export default connect(mapStateToProps,{getUserRecipes,deleteRecipe, updatePageTitle})(Favorites);
+    export default connect(mapStateToProps, {
+        getUserRecipes,
+        deleteRecipe,
+        updatePageTitle,
+        setRedirectMessage
+    })(Favorites);
