@@ -1,7 +1,8 @@
-import { updatePageTitle } from "../../../actions/projectActions";
-import { getRecipeById } from "../../../actions/projectActions";
-import { saveRecipe } from "../../../actions/projectActions";
-import {GET_SAVE_FEEDBACK} from "../../../actions/types"
+
+import {getRecipeById, saveRecipe } from "../../../actions/recipeActions";
+import { updatePageTitle} from "../../../actions/appUtilActions";
+import { setRedirectMessage } from "../../../actions/alertsActions";
+import {SET_SAVE_RECIPE_MESSAGE} from "../../../actions/types"
 import PageHeader from '../../sections/Page Header';
 import Header from '../../sections/Header';
 import Modal from '../../sections/Modal';
@@ -24,6 +25,7 @@ class Recipe extends Component {
 
     saveRecipe = () => { 
         if(!this.props.currentUser.validToken){
+            this.props.setRedirectMessage(true, "save recipes");
             this.props.history.push("/user-form/login")
         } else{
             let recipe = this.props.recipe;
@@ -34,9 +36,10 @@ class Recipe extends Component {
 
     componentWillUnmount(){
         store.dispatch({
-            type:GET_SAVE_FEEDBACK,
+            type:SET_SAVE_RECIPE_MESSAGE,
             payload:{}
-        })    }
+        })    
+    }
 
     componentDidMount(){
         let recipeId = this.props.match.params.recipeId;
@@ -99,6 +102,7 @@ class Recipe extends Component {
 
 Recipe.propTypes = {
     saveRecipe:PropTypes.func.isRequired,
+    setRedirectMessage:PropTypes.func.isRequired,
     getRecipeById:PropTypes.func.isRequired,
     updatePageTitle:PropTypes.func.isRequired,
     errors:PropTypes.object,
@@ -110,13 +114,14 @@ Recipe.propTypes = {
 
 const mapStateToProps = state =>({
     errors:state.error,
-    saveFeedBack:state.saveFeedBack,
-    recipe:state.recipe,
+    saveFeedBack:state.alerts.saveMessage,
+    recipe:state.recipe.recipe,
     currentUser:state.currentUser,
-    pageTitle:state.pageTitle
+    pageTitle:state.appUtil.pageTitle
 })
  
 export default connect(mapStateToProps,
     {saveRecipe,
     getRecipeById, 
+    setRedirectMessage,
     updatePageTitle})(Recipe);
