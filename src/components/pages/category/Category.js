@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCategories, updatePageTitle } from "../../../actions/projectActions";
+import { getCategories , updatePageTitle } from "../../../actions/appUtilActions";
 import PageHeader from '../../sections/Page Header';
 import Header from "../../sections/Header";
 import Loading from '../../sections/Loading';
@@ -53,7 +53,7 @@ Category.propTypes = {
   
   const mapStateToProps = state =>({
       errors:state.error,
-      categories:state.categories,
-      pageTitle:state.pageTitle
+      categories:state.appUtil.categories,
+      pageTitle:state.appUtil.pageTitle
   })
 export default connect(mapStateToProps,{getCategories, updatePageTitle})(Category);
