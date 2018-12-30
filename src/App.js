@@ -27,6 +27,7 @@ import store from "./store";
 import {
   Provider
 } from "react-redux";
+import PusherSmall from "./components/sections/Pusher-sm";
 
 
 const jwtToken = localStorage.getItem("JwtToken")
@@ -52,6 +53,7 @@ const App = () => (
         <Route exact path="/user-form/login" component={Login}/>
         <Route exact path="/logout" component={Logout}/>
       </div>
+      <PusherSmall/>
       <Footer/>
     </div>
   </Router>
