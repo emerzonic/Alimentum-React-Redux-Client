@@ -15,7 +15,7 @@
     text-decoration: none;
 }
 
-.error-text{
+.error-div .error-text{
     color:red;
     text-align: center
 }
