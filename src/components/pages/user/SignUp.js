@@ -1,8 +1,10 @@
 import React from 'react';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { createUser } from "../../../actions/projectActions";
+import { createUser } from "../../../actions/securityActions";
 import PropTypes from "prop-types";
+import store from "../../../store";
+
 
 import './user.css';
 class  SignUP extends Component {
@@ -42,6 +44,11 @@ componentWillReceiveProps(nextProps){
       this.setState({errors: nextProps.errors });
     }
   }
+  componentWillMount(){
+    if(store.getState().currentUser.validToken){
+        this.props.history.goBack()
+    }
+    }
     render() {
         const {errors} = this.state;
         const invalidClass = "form-control is-invalid";
