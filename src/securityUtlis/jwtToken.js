@@ -1,6 +1,6 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { logoutUser } from "../actions/projectActions";
+import { logoutUser } from "../actions/securityActions";
 
 
 
