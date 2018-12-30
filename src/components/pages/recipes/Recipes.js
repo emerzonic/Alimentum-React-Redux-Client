@@ -1,27 +1,35 @@
 import React from 'react';
-import  {Component} from 'react';
+import {
+  Component
+} from 'react';
 import '../home/home.css';
 import Header from "../../sections/Header";
 import PageHeader from '../../sections/Page Header';
-import { getRecipesByCategory,updatePageTitle } from "../../../actions/projectActions";
+import {
+  getRecipesByCategory
+} from "../../../actions/recipeActions";
+import {
+  updatePageTitle
+} from "../../../actions/appUtilActions";
 import Loading from '../../sections/Loading';
 import PropTypes from "prop-types";
-import { connect } from 'react-redux';
+import {
+  connect
+} from 'react-redux';
 import "./recipes.css";
 import Exception from '../errors/Exception';
 
 class Recipes extends Component {
 
-componentDidMount(){
-  let category = this.props.match.params.category;
-  let pageTitle = `${category} recipes`;
-  this.props.getRecipesByCategory(category);
-  this.props.updatePageTitle(pageTitle);
-}
+  componentDidMount() {
+    let category = this.props.match.params.category;
+    let pageTitle = `${category} recipes`;
+    this.props.getRecipesByCategory(category);
+    this.props.updatePageTitle(pageTitle);
+  }
 
   render() {
     let category = this.props.match.params.category;
-    console.log()
       return ( 
         <div>
             <Header  {...this.props}/>
@@ -47,18 +55,21 @@ componentDidMount(){
                )
           }
     }
-    
-Recipes.propTypes = {
-  getRecipesByCategory:PropTypes.func.isRequired,
-  updatePageTitle:PropTypes.func.isRequired,
-  pageTitle:PropTypes.string,
-  errors:PropTypes.object,
-  recipes:PropTypes.array.isRequired,
-  }
 
-const mapStateToProps = state =>({
-    errors:state.errors,
-    recipes:state.recipes,
-    pageTitle:state.pageTitle
+Recipes.propTypes = {
+  getRecipesByCategory: PropTypes.func.isRequired,
+  updatePageTitle: PropTypes.func.isRequired,
+  pageTitle: PropTypes.string,
+  errors: PropTypes.object,
+  recipes: PropTypes.array.isRequired,
+}
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+  recipes: state.recipe.recipes,
+  pageTitle: state.appUtil.pageTitle
 })
-export default connect(mapStateToProps,{getRecipesByCategory, updatePageTitle}) (Recipes);
+export default connect(mapStateToProps, {
+  getRecipesByCategory,
+  updatePageTitle
+})(Recipes);
