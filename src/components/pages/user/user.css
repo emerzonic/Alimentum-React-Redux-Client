@@ -21,6 +21,7 @@
 
 .text-muted{
     color:#d63939!important;
+    text-align: left;
 }
 
 .fa-exclamation-triangle{
@@ -52,14 +53,22 @@
 
 }
 
-.error-text{
-    color:red;
+.user-forms .error-text{
     font-style: italic;
     font-weight: 600;
+    text-align: left;
 }
 
 .logout-div{
     min-height: 38rem;
 
+}
+
+.login-message{
+    font-family:  var(--main-theme-font); 
+    letter-spacing: 0.08rem;
+}
+.fa-info-circle{
+    font-size: 1.5rem;
 }
 
