@@ -1,14 +1,5 @@
 import React from 'react';
 import '../pages/home/home.css';
-// import Img from "../../assets"
-
-
-
-// let img = {
-//     backgroundImage: 'url(' + Img.loadingImg.isloading + ')',
-//     backgroundRepeat:"no-repeat",
-//     backgroundSize:"cover"
-//   };
 
 const Loading = () => (
                 <div className="col-12">
