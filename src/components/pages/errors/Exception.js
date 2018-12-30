@@ -10,7 +10,7 @@ let img = {
   };
 
 const Exception = () => (
-        <div className="container m-0 p-0">
+        <div className="container m-0 p-0 error-div">
             <div className="card col-md-4 mx-auto bg-transparent border-0">
                 <img className="card-img-top mt-5" src={Img.errorImg.error} alt="Card cap"/>
                 <div className="card-body">
