@@ -1,54 +1,70 @@
 import React from 'react';
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { loginUser } from "../../../actions/projectActions";
+import {
+    Component
+} from 'react';
+import {
+    connect
+} from 'react-redux';
+import {
+    setRedirectMessage
+} from "../../../actions/alertsActions";
+import {
+    loginUser
+} from "../../../actions/securityActions";
 import PropTypes from "prop-types";
-
+import store from "../../../store";
 import './user.css';
-class  Login extends Component {
+const invalidClass = "form-control is-invalid";
+const validClass = "form-control";
+class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-                username: '',
-                password: '',
-                errors:{}
-            }
-        
+            username: '',
+            password: ''
+        }
+
         this.handleOnChange = (e) => {
             let target = e.target;
             let value = target.value;
-            let name  = target.name;
+            let name = target.name;
             this.setState({
-                    [name]:value
+                [name]: value
             })
         }
 
-        this.handleSubmit = e =>{
+        this.handleSubmit = e => {
             e.preventDefault();
-            let user = {
-                "username": e.target.username.value,
-                "password": e.target.password.value,
-            };
+            let user = this.state;
             const history = this.props.history;
-            e.target.reset();
             this.props.loginUser(user, history)
         }
-
-        
-}
-
-componentWillReceiveProps(nextProps){
-    if(nextProps.errors){
-      this.setState({errors: nextProps.errors });
     }
-    if(nextProps.currentUser.validToken){
-      this.props.history.push("/categories")
+
+    componentWillUnmount() {
+        this.props.setRedirectMessage(false, "");
     }
-  }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
+        }
+        if (nextProps.currentUser.validToken) {
+            this.props.history.push("/categories")
+        }
+    }
+
+    componentWillMount() {
+        if (store.getState().currentUser.validToken) {
+            this.props.history.push("/")
+        }
+    }
     render() { 
-        const {errors} = this.state;
-        const invalidClass = "form-control is-invalid";
-        const validClass = "form-control";
+        const {errors} = this.props;
+        const {welcomeMessage} = this.props;
+        const {loginRedirectMessage} = this.props;
         return (
             <div className="container">
             <div className="row">
@@ -58,6 +74,12 @@ componentWillReceiveProps(nextProps){
                 <small className="error-text form-text text-muted">
                         {errors?errors.credentials:""}
                 </small>
+                        {welcomeMessage.text || loginRedirectMessage.text? 
+                            <div className="alert login-message alert-info save-feedback mx-md-0 px-md-2" role="alert">
+                            <i className="fas fa-info-circle mr-1"></i>
+                                    {welcomeMessage.text|| loginRedirectMessage.text}
+                            </div>:""
+                        }
                         <div className="form-group">
                             <label className="form-label" htmlFor="username">Username</label>
                             <input type="text" className={errors.username?invalidClass:validClass} id="login-username" aria-describedby="username" placeholder="Enter Username"  
@@ -86,16 +108,22 @@ componentWillReceiveProps(nextProps){
 }
 
 Login.propTypes = {
-    loginUser:PropTypes.func.isRequired,
-    errors:PropTypes.object.isRequired,
-    currentUser:PropTypes.object.isRequired
+    loginUser: PropTypes.func.isRequired,
+    setRedirectMessage: PropTypes.func.isRequired,
+    errors: PropTypes.object.isRequired,
+    currentUser: PropTypes.object.isRequired,
+    welcomeMessage: PropTypes.object,
+    loginRedirectMessage: PropTypes.object
 }
 
-const mapStateToProps = state =>({
-    errors:state.errors,
-    currentUser:state.currentUser
+const mapStateToProps = state => ({
+    errors: state.errors,
+    currentUser: state.currentUser,
+    welcomeMessage: state.alerts.welcomeMessage,
+    loginRedirectMessage: state.alerts.redirectMessage
 
 })
 export default connect(mapStateToProps, {
-    loginUser
+    loginUser,
+    setRedirectMessage
 })(Login);
