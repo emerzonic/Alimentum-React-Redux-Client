@@ -66,3 +66,9 @@ p.ex1 {
   font-size: 1.5rem;
   font-weight: 400;
 }
+
+.header-error-text{
+  font-size: 1rem;
+  font-style: italic;
+  color:red;
+}
