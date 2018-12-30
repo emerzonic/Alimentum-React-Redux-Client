@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Img from "../../../assets"
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
-import { getMenus } from "../../../actions/projectActions";
+import { getMenus } from "../../../actions/appUtilActions";
 
 
 
@@ -29,7 +29,7 @@ class  Home extends Component {
                 <div className="row px-md-5 px-sm-2">
                     {this.props.menus.map((card,i)=>
                         <div className="col-md-3" key={i}>
-                            <div className="card bg-dark text-white my-3 text-center home-page-cards border-0" 
+                            <div className="card bg-dark text-white my-3 text-center home-page-cards border-0 shadow-lg" 
                                  onClick={()=>this.props.history.push(card.url)}>
                                 <img className="card-img home-page-img" src={card.image} alt="Card"/>
                                 <div className="card-img-overlay">
@@ -53,6 +53,6 @@ Home.propTypes = {
     }
   
   const mapStateToProps = state =>({
-      menus:state.menus,
+      menus:state.appUtil.menus,
   })
 export default connect(mapStateToProps,{getMenus})(Home);
