@@ -5,7 +5,7 @@
     } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { logoutUser } from "../../../actions/projectActions";
+import { logoutUser } from "../../../actions/securityActions";
 import PropTypes from "prop-types";
      
     const customStyles = {
