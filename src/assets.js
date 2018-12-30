@@ -74,9 +74,9 @@ const assets = {
     },
     card3: {
       image: require('./images/chicken.jpg'),
-      text: "Login or Sign Up",
+      text: "Login",
       icon:"fas fa-lock-open home-page-icons",
-      url:"/user/login"
+      url:"/user-form/login"
     },
     card4: {
       image: require('./images/desert.jpg'),
