@@ -38,7 +38,7 @@ const Nav = (props) => (
                     :""}
                     {!props.currentUser.validToken?
                         <a href="/user-form/signup" className="nav-link justify-self-end">
-                            <i class="fas fa-user-plus mr-2"></i>
+                            <i className="fas fa-user-plus mr-2"></i>
                             Sign Up
                         </a>
                     :""}

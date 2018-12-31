@@ -83,8 +83,8 @@ class Recipe extends Component {
                             </button>
                             <a href={this.props.recipe.strSource} 
                                className="btn btn-lg btn-link" target="_blank" rel="noopener noreferrer">
-                                <i className="fas fa-external-link-alt mr-2"></i>
-                                Read More
+                               Read More
+                                <i className="fas fa-external-link-alt ml-2"></i>
                             </a>
                             <Alert/>
                          </div>

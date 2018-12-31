@@ -2,8 +2,8 @@
   "name": "alimentum-react-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000/",
-  "homepage": "https://emerzonic.github.io/Alimentum-version-2.0/",
+  "proxy": "https://serene-shelf-44263.herokuapp.com/",
+  "homepage": "https://serene-shelf-44263.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
@@ -21,7 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "npm run build&&gh-pages -d build",
+    "deploy": "npm run build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
