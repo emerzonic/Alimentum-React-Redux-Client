@@ -2,12 +2,14 @@ import {
     GET_RECIPES,
     GET_RECIPE,
     GET_FAVORITE_RECIPES,
-    DELETE_RECIPE
+    DELETE_RECIPE, 
+    SET_MODAL_CONTENT
 } from "../actions/types";
 
 const initialState = {
     recipes: [],
     recipe: {},
+    isModalContentSet:false,
     favoriteRecipes: []
 }
 
@@ -20,6 +22,10 @@ export default function (state = initialState, action) {
         case GET_RECIPE:
             return { ...state,
                 recipe: action.payload
+            }
+        case SET_MODAL_CONTENT:
+            return { ...state,
+                isModalContentSet:action.payload
             }
         case GET_FAVORITE_RECIPES:
             return { ...state,
