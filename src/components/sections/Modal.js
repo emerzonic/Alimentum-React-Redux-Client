@@ -10,13 +10,13 @@ const Modal = (props) => (
     <div className="modal-dialog modal-lg" role="document">
       <div className="modal-content">
         <div className="modal-header">
-          <h5 className="modal-title" id="exampleModalLabel">{props.isModalContentSet?props.recipeTitle:""}</h5>
+          <h5 className="modal-title" id="exampleModalLabel">{props.isModalOpen?props.recipeTitle:""}</h5>
           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" data-modal="false" onClick={props.setModalContent}>&times;</span>
           </button>
         </div>
         <div className="modal-body">
-            <iframe id="videoIframe" src={props.isModalContentSet?props.videoUrl:""} 
+            <iframe id="videoIframe" src={props.isModalOpen?props.videoUrl:""} 
                     className="embed-responsive-item" width="100%" height="400" 
                     title="youtube" frameBorder="0" allowFullScreen>
             </iframe>
@@ -31,13 +31,13 @@ const Modal = (props) => (
 );
 
 Modal.propTypes = {
-  isModalContentSet:PropTypes.bool,
+  isModalOpen:PropTypes.bool,
   videoUrl:PropTypes.string,
   recipeTitle:PropTypes.string
 }
 
 const mapStateToProps = state =>({
-  isModalContentSet:state.recipe.isModalContentSet,
+  isModalOpen:state.recipe.isModalOpen,
   videoUrl:state.recipe.recipe.strYoutube,
   recipeTitle:state.recipe.recipe.strMeal
 })
