@@ -11,11 +11,11 @@ import store from "../../../store";
 import Img from '../../../assets';
 import  {Component} from 'react';
 import React from 'react';
-import '../home/home.css';
-import "./detail.css";
 import Alert from "./Alert";
 import Instructions from "./Instructions";
 import Ingredients from "./Ingredients";
+import "./detail.css";
+
 
 let img = {
     backgroundImage: 'url(' +Img.youtube.img + ')',
@@ -32,7 +32,6 @@ class Recipe extends Component {
         } else{
             let recipe = this.props.recipe;
             const {id} = this.props.currentUser.user;
-            console.log(recipe)
             this.props.saveRecipe(recipe, id)
         }
     };
