@@ -3,6 +3,7 @@ export const RESET_ERRORS = "RESET_ERRORS";
 
 export const GET_RECIPES = "GET_RECIPES";
 export const GET_RECIPE = "GET_RECIPE";
+export const SET_MODAL_CONTENT = "SET_MODAL_CONTENT";
 export const GET_FAVORITE_RECIPES = "GET_FAVORITE_RECIPES";
 export const DELETE_RECIPE = "DELETE_RECIPE";
 
