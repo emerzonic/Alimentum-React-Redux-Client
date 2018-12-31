@@ -62,10 +62,13 @@ class Header extends Component {
                             </small> 
                             <form className="form-inline mt-3 w-100" onSubmit={this.onSubmit}>
                                 <div className="input-group col-md-6 mb-3 pl-md-0">
-                                    <input type="text" className={errors.searchTerm?invalidClass:validClass} placeholder="Search Recipes..." aria-label="Recipient's username" aria-describedby="button-addon2"  
-                                        onChange={this.onChange} value={this.state.name}/>
+                                    <input type="text" className={errors.searchTerm?invalidClass:validClass} 
+                                           placeholder="Search Recipes..." aria-label="Recipient's username" 
+                                           aria-describedby="button-addon2"  
+                                           onChange={this.onChange} value={this.state.name}/>
                                     <div className="input-group-append">
-                                         <button className="btn btn-success" type="submit" id="button-addon2"><i className="fas fa-search"></i> Search</button>
+                                         <button className="btn btn-success" type="submit" id="button-addon2">
+                                            <i className="fas fa-search"></i> Search</button>
                                     </div> 
                                 </div>
                             </form>
