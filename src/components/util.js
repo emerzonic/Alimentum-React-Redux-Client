@@ -18,7 +18,7 @@ export default {
         let instString = rawObj.strInstructions.split('. ');
         instString.forEach((instr)=> {
             var instr2 = instr.replace(/\n|\r/g, "");
-            let instr3 = instr2.replace(/\.\d+$/, ".");
+            let instr3 = instr2.replace(/\.\d+/, ".");
             instructions.push(instr3)
         })
 
