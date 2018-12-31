@@ -9,7 +9,7 @@ const Instructions = (props) => (
         <ul className="card-text bg-light">
             {props.strInstructions?
                 props.strInstructions.map((instr, i) => {
-                return(<div className="bg-light px-md-3 py-md-2 instruction-div" key={i}>
+                return(<div className="bg-light px-3 py-md-2 instruction-div" key={i}>
                             <li className="instruction">
                                 {instr}
                             </li>
