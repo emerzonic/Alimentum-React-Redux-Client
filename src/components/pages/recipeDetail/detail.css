@@ -3,7 +3,23 @@
 }
 
 .recipe-detail-div .card-img-top{
-    height:30rem;
+    max-height:40rem;
+}
+
+.button-div{
+   margin-top: 0.5rem;
+   padding: 0.5rem;
+   border-radius: 0.5rem;
+   display:flex;
+}
+
+.button-div .btn{
+    margin: 0.2rem 0.2rem;
+    font-family:var(--main-theme-font); 
+}
+
+.button-div .btn-link:hover{
+    text-decoration: none;
 }
 
 .list-group-item{
@@ -12,15 +28,16 @@
     text-decoration-style: none;
 }
 
+
 ul {
     list-style-type: none;
     font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.08rem;
     color:rgb(1, 29, 1);
+    padding: 0;
   }
 .card-img:hover{
     cursor: pointer;
-
 }
 
 .youtube:hover{
@@ -32,3 +49,14 @@ ul {
     font-size: 1.2rem;
     color:var(--main-theme-color); 
 }
+
+.instruction-div{
+    border-left:0.5rem solid var(--main-theme-color); ;
+}
+
+hr{
+    margin-top:0.5rem;
+    margin-bottom:0;
+}
+
+
