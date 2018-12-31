@@ -97,7 +97,7 @@ class Login extends Component {
                             </small>
                         </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
-                            <p className="d-inline mx-2"> Don't have an account?</p>
+                            <p className="d-inline mx-2 inquiry-text"> Don't have an account?</p>
                             <a className="d-inline user-links"  href="/user-form/signup"> Sign UP</a>
                     </form>
                 </div>

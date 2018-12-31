@@ -91,7 +91,7 @@ componentWillReceiveProps(nextProps){
                         </div>
             
                             <button type="submit" className="btn btn-primary">Submit</button>
-                            <p className="d-inline mx-2"> Already have an account?</p>
+                            <p className="d-inline mx-2 inquiry-text"> Already have an account?</p>
                             <a className="d-inline user-links" href="/user-form/login"> Login</a>
                     </form>
                 </div>
