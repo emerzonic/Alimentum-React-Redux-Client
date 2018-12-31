@@ -16,22 +16,38 @@ const Nav = (props) => (
                     <span className="text-white ml-2">Menu</span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <a href="/categories" className="nav-link">Categories</a>
-                    <a href={"/user/favorites"} className="nav-link">Favorites</a>
+                    <a href="/categories" className="nav-link">
+                        <i className="fas fa-list-alt mr-2"></i>
+                        Categories
+                    </a>
+                    <a href={"/user/favorites"} className="nav-link">
+                        <i className="far fa-star mr-2"></i>
+                        Favorites
+                    </a>
                     {props.currentUser.validToken?
-                    <a href="/logout" className="nav-link justify-self-end">Logout</a>
+                    <a href="/logout" className="nav-link justify-self-end">
+                        <i className="fas fa-sign-out-alt mr-2"></i>
+                            Logout
+                    </a>
                     :""}
                     {!props.currentUser.validToken?
-                        <a href="/user-form/login" className="nav-link justify-self-end">Login</a>
+                        <a href="/user-form/login" className="nav-link justify-self-end">
+                            <i className="fas fa-sign-in-alt mr-2"></i>
+                            Login
+                        </a>
                     :""}
                     {!props.currentUser.validToken?
-                        <a href="/user-form/signup" className="nav-link justify-self-end">Sign Up</a>
+                        <a href="/user-form/signup" className="nav-link justify-self-end">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Sign Up
+                        </a>
                     :""}
                     {props.currentUser.validToken?
-                        <a href="/" className="nav-link justify-self-end"><i className="fas fa-user-circle"></i> {props.currentUser.user.username}</a>
+                        <a href="/" className="nav-link justify-self-end">
+                            <i className="fas fa-user-circle mr-2"></i> 
+                            {props.currentUser.user.username}
+                        </a>
                     :""}
-                
-                   
                 </div>
             </nav>
     </div>
