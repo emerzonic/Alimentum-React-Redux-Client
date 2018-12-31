@@ -11,9 +11,12 @@ import PageHeader from '../../sections/Page Header';
 import "./favorite.css";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
+import {SET_DELETE_RECIPE_MESSAGE} from '../../../actions/types';
 import {getUserRecipes,deleteRecipe,} from "../../../actions/recipeActions";
 import {updatePageTitle} from "../../../actions/appUtilActions";
 import {setRedirectMessage} from "../../../actions/alertsActions";
+import Alert from '../recipeDetail/Alert';
+import store from '../../../store';
 
 class Favorites extends Component {
 
@@ -21,12 +24,18 @@ class Favorites extends Component {
         let recipeId = Number(event.target.getAttribute("data-id"));
         let {id} = this.props.currentUser.user;
         this.props.deleteRecipe(recipeId, id);
+        setTimeout(() => {
+            store.dispatch({
+                type: SET_DELETE_RECIPE_MESSAGE,
+                payload: {}
+            })
+        }, 3000);
     };
 
     componentWillReceiveProps = (nextProps) => {
       if(nextProps){
         let pageTitle = this.props.favoriteRecipes.length?
-        "Your Favorites.":"You have not saved any recipe.";
+        "Your Favorites.":"You do not have any saved recipes. Saved recipes will display below.";
         this.props.updatePageTitle(pageTitle);
       }
     }
@@ -44,7 +53,6 @@ class Favorites extends Component {
         }
     }
     render() { 
-        console.log(this.props)
         return (
             <div>
             <Header  {...this.props}/>
@@ -52,7 +60,7 @@ class Favorites extends Component {
                 <div className="container items-container shadow-sm my-2 rounded bg-white">
                     <div className="row">
                         <div className="col-12">
-                        <div className="text-center text-success">{this.props.deleteFeedBack?this.props.deleteFeedBack.text:""}</div>
+                        <Alert/>
                         {this.props.errors !== undefined?
                             (this.props.favoriteRecipes.lenghth === 0 ? <Loading/>:
                             <FavoriteRecipes favoriteRecipes={this.props.favoriteRecipes} 
