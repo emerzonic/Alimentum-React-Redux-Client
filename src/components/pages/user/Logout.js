@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { logoutUser } from "../../../actions/securityActions";
 import PropTypes from "prop-types";
+import "./user.css";
      
     const customStyles = {
       content : {
@@ -17,7 +18,8 @@ import PropTypes from "prop-types";
         marginRight : '-50%',
         transform   : 'translate(-50%, -50%)',
         padding     : '5% 10%',
-        color       :'red'
+        color       :'red',
+        border      : '0.2rem solid green',
       }
     };
  
@@ -52,26 +54,27 @@ import PropTypes from "prop-types";
       render() {
         return (
           <div className="logout-div">
-            <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal}
-                onRequestClose={this.closeModal} style={customStyles}
-            >
-              <h2 ref={subtitle => this.subtitle = subtitle}>Please Confirm</h2>
-              <div>
-                  <div className="image content">
-                      <div className="description">
-                        <div className="ui header">Are you sure you want to sign out?</div>
-                      </div>
-                  </div>
-                  <div className="actions">
-                    <div data-id="deny" className="btn btn-primary"  onClick={this.closeModal}>
-                      Return
+              <Modal isOpen={this.state.modalIsOpen} onAfterOpen={this.afterOpenModal}
+                onRequestClose={this.closeModal} style={customStyles}>
+                  <div className="card border-0">
+                    <div className="card-body p-0">
+                      <h5 className="card-title confirm-text text-danger"> 
+                          <i className="fas fa-exclamation mr-2"></i>
+                          Please Confirm
+                      </h5>
+                      <hr/>
+                      <p className="card-text warning-text">Are you sure you want to sign out?</p>
+                      <div className="actions text-center">
+                          <button data-id="deny" className="btn btn-success"  onClick={this.closeModal}>
+                          <i className="fas fa-undo mr-1"></i>Return
+                          </button>
+                          <button data-id="positive" className="btn btn-warning mx-2" onClick={this.closeModal}>
+                            Click to Signout
+                          </button>
+                      </div>    
                     </div>
-                    <div data-id="positive" className="btn btn-warning mx-2" onClick={this.closeModal}>
-                        Click to Signout
-                    </div>
                   </div>
-                </div>
-          </Modal>
+              </Modal>
           </div>
         );
       }
@@ -86,5 +89,7 @@ import PropTypes from "prop-types";
   export default connect(null, {
       logoutUser
   })(Logout);
+
+
 
 
