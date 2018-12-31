@@ -9,7 +9,7 @@ import {
 const initialState = {
     recipes: [],
     recipe: {},
-    isModalContentSet:false,
+    isModalOpen:false,
     favoriteRecipes: []
 }
 
@@ -25,7 +25,7 @@ export default function (state = initialState, action) {
             }
         case SET_MODAL_CONTENT:
             return { ...state,
-                isModalContentSet:action.payload
+                isModalOpen:action.payload
             }
         case GET_FAVORITE_RECIPES:
             return { ...state,
