@@ -72,3 +72,50 @@ p.ex1 {
   font-style: italic;
   color:red;
 }
+
+.small-pusher{
+  height: 4.5rem;
+}
+
+@media(max-width:500px){
+  .small-pusher{
+    height: 7rem;
+  }
+}
+
+.footer-text{
+  color:white;
+  font-family:Roboto; 
+  margin: 1.5rem;
+  text-align: center;
+}
+
+.fixed-bottom .fa-leaf{
+  color:var(--main-theme-color);
+}
+
+
+.fixed-bottom .fa-react{
+  color:#24cbf6;
+}
+
+.modal .btn{
+  font-family:var(--main-theme-font); 
+}
+
+.modal-content{
+  background-color: #deefe4;
+}
+
+.modal-title{
+  color:var(--main-theme-color);
+  font-family:var(--main-theme-font); 
+}
+
+.modal-header{
+  border-bottom:0.2rem solid var(--main-theme-color);
+}
+
+.input-group-append .btn{
+  font-family:var(--main-theme-font); 
+}

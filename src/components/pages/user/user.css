@@ -42,7 +42,11 @@
     text-decoration: none;
     text-decoration-style: none;
     color:var(--main-theme-color);
+    font-family:  var(--main-theme-font); 
+}
 
+.inquiry-text{
+    font-family:  var(--main-theme-font);
 }
 
 
