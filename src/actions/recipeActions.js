@@ -8,7 +8,8 @@ import {
     GET_FAVORITE_RECIPES,
     DELETE_RECIPE,
     SET_SAVE_RECIPE_MESSAGE,
-    SET_DELETE_RECIPE_MESSAGE
+    SET_DELETE_RECIPE_MESSAGE,
+    SET_MODAL_CONTENT
 } from "./types";
 import {
     getErrors
@@ -70,6 +71,13 @@ export const saveRecipe = (recipe, userId) => async dispatch => {
     } catch (err) {
         getErrors(err, dispatch);
     }
+}
+
+export const setModalContent = (boolean) => async dispatch => {
+        dispatch({
+            type: SET_MODAL_CONTENT,
+            payload: boolean
+        })
 }
 
 
