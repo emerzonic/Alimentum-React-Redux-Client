@@ -2,10 +2,14 @@ import React from 'react';
 import '../pages/home/home.css';
 
 const Footer = () => (
-    <nav className="nav navbar-light bg-dark text-center fixed-bottom">
-        <span className="item text-light p-md-5"><i className="fas fa-leaf text-success"></i><i className="fab fa-react ml-2"></i> Built with Spring Boot REST Service backend & React JS client. </span>
-        <span className="item text-light p-md-5"> Copyright &copy;2018 Emerson Doyah Projects</span>
-    </nav> 
+    <div className="nav navbar-light bg-dark text-center text-light fixed-bottom">
+    <p className="footer-text m-sm-4">
+        
+        
+        Built with <i className="fas fa-leaf ml-1"></i> Spring Boot REST Service backend & <i className="fab fa-react ml-1"></i> React JS client.
+         Copyright &copy;2018 Emerson Doyah Projects
+    </p>
+    </div> 
 );
 
 export default Footer;
