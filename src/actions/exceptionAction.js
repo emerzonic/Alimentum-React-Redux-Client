@@ -19,7 +19,6 @@ export const getErrors = (err, dispatch) => {
 
 
 export const resetErrors = (dispatch) => {  
-    console.log(dispatch) 
         dispatch({
             type: RESET_ERRORS,
             payload: {}
