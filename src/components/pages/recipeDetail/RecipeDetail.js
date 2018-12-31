@@ -1,5 +1,4 @@
-
-import {getRecipeById, saveRecipe } from "../../../actions/recipeActions";
+import {getRecipeById, saveRecipe, setModalContent } from "../../../actions/recipeActions";
 import { updatePageTitle} from "../../../actions/appUtilActions";
 import { setRedirectMessage } from "../../../actions/alertsActions";
 import {SET_SAVE_RECIPE_MESSAGE} from "../../../actions/types"
@@ -14,6 +13,9 @@ import  {Component} from 'react';
 import React from 'react';
 import '../home/home.css';
 import "./detail.css";
+import Alert from "./Alert";
+import Instructions from "./Instructions";
+import Ingredients from "./Ingredients";
 
 let img = {
     backgroundImage: 'url(' +Img.youtube.img + ')',
@@ -30,7 +32,17 @@ class Recipe extends Component {
         } else{
             let recipe = this.props.recipe;
             const {id} = this.props.currentUser.user;
+            console.log(recipe)
             this.props.saveRecipe(recipe, id)
+        }
+    };
+
+    setModalContent = (e) => { 
+        const setContent = e.target.getAttribute("data-modal")
+        if(setContent === "true"){
+            this.props.setModalContent(true);
+        }else{
+            this.props.setModalContent(false);
         }
     };
 
@@ -55,47 +67,47 @@ class Recipe extends Component {
                 <div className="container px-0 my-2 items-container" >
                  <div className="card mb-3 recipe-detail-div border-0 shadow-sm p-md-4">
                 <div className="row">
-                      <div className="col-md-8 pl-0">
-                          <img className="card-img-top img-fluid rounded ml-md-4" src={this.props.recipe.strMealThumb} alt={this.props.name}/>
+                      <div className="col-md-12">
+                          <img className="card-img-top img-fluid rounded" 
+                               src={this.props.recipe.strMealThumb} alt={this.props.name}/>
                       </div>
-                    <div className="col-md-4">
-                            <button className="mx-1 w-100 m-2 youtube border-0 btn-lg" style={img} data-toggle="modal" data-target="#exampleModal">Watch Video</button>
-                            <button className="btn btn-lg btn-primary mx-1 w-100 m-2" onClick={this.saveRecipe}>Save Recipe</button>
-                            <a href={this.props.recipe.strSource} className="btn btn-lg btn-primary mx-1 w-100 m-2" target="_blank" rel="noopener noreferrer">Read More</a>
+                    <div className="col-md-12">
+                        <div className="button-div flex-column flex-md-row shadow-sm">
+                            <button className="btn btn-lg btn-danger" data-toggle="modal" data-target="#exampleModal" 
+                            data-modal="true" onClick={this.setModalContent}>
+                                <i className="fab fa-youtube mr-2"></i>
+                                Watch Video
+                            </button>
+                            <button className="btn btn-lg btn-outline-success" onClick={this.saveRecipe}>
+                                <i className="fas fa-plus mr-2"></i>
+                                Add To Favorites
+                            </button>
+                            <a href={this.props.recipe.strSource} 
+                               className="btn btn-lg btn-link" target="_blank" rel="noopener noreferrer">
+                                <i className="fas fa-external-link-alt mr-2"></i>
+                                Read More
+                            </a>
+                            <Alert/>
+                         </div>
                       </div>
                   </div>
                   <div className="card-body">
                       <div className="row">
                           <div className="col-md-12 pl-0">
-                              <h5 className="card-title display-4"><i className="far fa-flag"></i> {this.props.recipe.strArea}</h5>
+                              <h5 className="card-title display-4 border-bottom">
+                                <i className="far fa-flag mr-2"></i> 
+                                    {this.props.recipe.strArea}
+                              </h5>
                           </div>
                       </div>
                       <div className="row">
-                          <div className="col-md-8 pl-0">
-                          <h5 className="card-title">Instructions</h5>
-                          <ul className="card-text bg-light p-4">
-                                {this.props.recipe.strInstructions?
-                                    this.props.recipe.strInstructions.map((instr, i)=>{
-                                    return(<div className="p-2 bg-light" key={i}><i className="fas fa-check-square mr-2 d-inline"></i><li className="instruction d-inline">{instr}</li></div> )
-                                }):""}
-                            </ul>
-                          </div>
-                        <div className="col-md-4">
-                        <h5 className="card-title"><i className="fas fa-carrot"></i> Ingredients</h5>
-                          <div className="card w-100 mr-2">
-                              <ul className="list-group list-group-flush border-0">
-                                {this.props.recipe.strIngredients?
-                                    this.props.recipe.strIngredients.map((ing, i)=>{
-                                  return <li className="list-group-item ingredient py-1" key={i}>{this.props.recipe.strMeasurements[i]} {ing}</li>
-                                }):""}
-                              </ul>
-                          </div>
-                        </div>
+                        <Instructions/>
+                        <Ingredients/>
                     </div>
                   </div>
                 </div>
             </div>
-        <Modal recipe={this.props.recipe}/>                  
+        <Modal setModalContent={this.setModalContent}/>                  
     </div>
       }
 }
@@ -105,6 +117,7 @@ Recipe.propTypes = {
     setRedirectMessage:PropTypes.func.isRequired,
     getRecipeById:PropTypes.func.isRequired,
     updatePageTitle:PropTypes.func.isRequired,
+    setModalContent:PropTypes.func.isRequired,
     errors:PropTypes.object,
     saveFeedBack:PropTypes.object.isRequired,
     recipe:PropTypes.object,
@@ -124,4 +137,5 @@ export default connect(mapStateToProps,
     {saveRecipe,
     getRecipeById, 
     setRedirectMessage,
-    updatePageTitle})(Recipe);
+    updatePageTitle,
+    setModalContent})(Recipe);
