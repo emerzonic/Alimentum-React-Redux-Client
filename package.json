@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://serene-shelf-44263.herokuapp.com/",
-  "homepage": "https://serene-shelf-44263.herokuapp.com/",
+  "homepage": "https://peaceful-inlet-35635.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
