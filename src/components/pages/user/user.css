@@ -65,8 +65,27 @@
 
 .logout-div{
     min-height: 38rem;
-
 }
+
+.warning-text{
+    font-family:  var(--main-theme-font);
+    color:rgb(77, 102, 77);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.08rem;
+}
+
+.confirm-text{
+    font-size: 1.5rem;
+    letter-spacing: 0.09rem;
+}
+
+.btn{
+    font-family:  var(--main-theme-font);
+    letter-spacing: 0.08rem;
+}
+
+
 
 .login-message{
     font-family:  var(--main-theme-font); 
