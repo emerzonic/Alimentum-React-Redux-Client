@@ -1,8 +1,7 @@
 import {
     GET_CATEGORIES,
     SET_MENUS,
-    SET_PAGE_TITLE,
-    SHOW_BACK_BUTTON
+    SET_PAGE_TITLE
 } from "../actions/types";
 
 const initialState = {
@@ -25,10 +24,6 @@ export default function (state = initialState, action) {
         case SET_PAGE_TITLE:
             return { ...state,
                 pageTitle: action.payload
-            }
-        case SHOW_BACK_BUTTON:
-            return { ...state,
-                showBackButton:action.payload
             }
         default:
             return state
