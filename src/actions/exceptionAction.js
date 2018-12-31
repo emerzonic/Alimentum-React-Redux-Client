@@ -3,7 +3,7 @@ import {
 } from "./types";
 
 
-export const getErrors = (err, dispatch) => {   
+export const getErrors = (err, dispatch) => { 
     if (err.response && err.response.status && err.response.status === 500) {
         dispatch({
             type: GET_ERRORS,
