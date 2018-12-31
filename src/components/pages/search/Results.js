@@ -1,28 +1,21 @@
 import React from 'react';
-import store from "../../../store";
 import {
     Component
 } from 'react';
-import '../home/home.css';
-import PageHeader from '../../sections/Page Header';
-import Pusher from '../../sections/Pusher';
-import PropTypes from "prop-types";
 import {
     connect
 } from 'react-redux';
 import {
-    resetErrors
-} from "../../../actions/exceptionAction"
-import {
-    updatePageTitle,
-    updateBackButton
+    updatePageTitle
 } from "../../../actions/appUtilActions";
+import PageHeader from '../../sections/Page Header';
+import Pusher from '../../sections/Pusher';
+import PropTypes from "prop-types";
+import '../home/home.css';
+
+
 
 class Results extends Component {
-    componentWillUnmount() {
-        this.props.updateBackButton(false);
-    }
-
 
     componentDidMount() {
         let searchTerm = this.props.match.params.searchTerm;
@@ -30,7 +23,6 @@ class Results extends Component {
             `Showing results for "${searchTerm}".` :
             `We did not find any recipes for "${searchTerm}". Please try another search.`;
         this.props.updatePageTitle(pageTitle);
-        this.props.updateBackButton(true);
     }
 
     render() {
@@ -60,11 +52,9 @@ class Results extends Component {
 
 Results.propTypes = {
     updatePageTitle: PropTypes.func.isRequired,
-    updateBackButton: PropTypes.func.isRequired,
     pageTitle: PropTypes.string,
     errors: PropTypes.object,
     recipes: PropTypes.array.isRequired,
-    showBackButton: PropTypes.bool,
 }
 
 const mapStateToProps = state => ({
@@ -75,6 +65,5 @@ const mapStateToProps = state => ({
 
 })
 export default connect(mapStateToProps, {
-    updatePageTitle,
-    updateBackButton,
+    updatePageTitle
 })(Results);
