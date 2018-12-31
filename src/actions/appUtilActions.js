@@ -4,9 +4,7 @@ import {
 
     SET_PAGE_TITLE,
     GET_CATEGORIES,
-    SET_MENUS,
-    SHOW_BACK_BUTTON,
-    
+    SET_MENUS
 } from "./types";
 
 //SETUP HOME PAGE MENU
@@ -36,10 +34,3 @@ export const updatePageTitle = (pageTitle) => async dispatch => {
 }
 
 
-//DYNAMIC DISPLAY OF BACK BUTTON
-export const updateBackButton = (status) => async dispatch => {
-    dispatch({
-        type: SHOW_BACK_BUTTON,
-        payload: status
-    })
-}
