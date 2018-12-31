@@ -17,5 +17,4 @@ export const SET_WELCOME_MESSAGE = "SET_WELCOME_MESSAGE";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SET_MENUS = "SET_MENUS";
 export const SET_PAGE_TITLE = "SET_PAGE_TITLE";
-export const SHOW_BACK_BUTTON = "SHOW_BACK_BUTTON";
 
