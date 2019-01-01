@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Alimentum-React-Redux-Client/static/media/pasta.6ccbce86.jpg"
   },
   {
-    "revision": "59b79a9a32fece8d68ae",
+    "revision": "1c23660655467cbb286c",
     "url": "/Alimentum-React-Redux-Client/static/css/main.3156b265.chunk.css"
   },
   {
@@ -40,8 +40,8 @@ self.__precacheManifest = [
     "url": "/Alimentum-React-Redux-Client/static/media/lamb.2849a26c.jpg"
   },
   {
-    "revision": "59b79a9a32fece8d68ae",
-    "url": "/Alimentum-React-Redux-Client/static/js/main.59b79a9a.chunk.js"
+    "revision": "1c23660655467cbb286c",
+    "url": "/Alimentum-React-Redux-Client/static/js/main.1c236606.chunk.js"
   },
   {
     "revision": "34cedc0f45cf6d2184442c204994a0d0",
@@ -76,7 +76,7 @@ self.__precacheManifest = [
     "url": "/Alimentum-React-Redux-Client/static/media/youtube.e55ad030.jpg"
   },
   {
-    "revision": "5e51112dbc79108f6d89c90215207d03",
+    "revision": "26bf97d740b9d98d140d453b2dcf2cb6",
     "url": "/Alimentum-React-Redux-Client/index.html"
   }
 ];

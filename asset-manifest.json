@@ -1,7 +1,7 @@
 {
   "main.css": "/Alimentum-React-Redux-Client/static/css/main.3156b265.chunk.css",
-  "main.js": "/Alimentum-React-Redux-Client/static/js/main.59b79a9a.chunk.js",
-  "main.js.map": "/Alimentum-React-Redux-Client/static/js/main.59b79a9a.chunk.js.map",
+  "main.js": "/Alimentum-React-Redux-Client/static/js/main.1c236606.chunk.js",
+  "main.js.map": "/Alimentum-React-Redux-Client/static/js/main.1c236606.chunk.js.map",
   "static/js/1.d70c6362.chunk.js": "/Alimentum-React-Redux-Client/static/js/1.d70c6362.chunk.js",
   "static/js/1.d70c6362.chunk.js.map": "/Alimentum-React-Redux-Client/static/js/1.d70c6362.chunk.js.map",
   "runtime~main.js": "/Alimentum-React-Redux-Client/static/js/runtime~main.2312eede.js",
@@ -23,6 +23,6 @@
   "static/media/youtube.jpg": "/Alimentum-React-Redux-Client/static/media/youtube.e55ad030.jpg",
   "static/css/main.3156b265.chunk.css.map": "/Alimentum-React-Redux-Client/static/css/main.3156b265.chunk.css.map",
   "index.html": "/Alimentum-React-Redux-Client/index.html",
-  "precache-manifest.626e8a7fd5a7eef5be88f095ff3b9663.js": "/Alimentum-React-Redux-Client/precache-manifest.626e8a7fd5a7eef5be88f095ff3b9663.js",
+  "precache-manifest.4f978f3c091882497d34b07a73369725.js": "/Alimentum-React-Redux-Client/precache-manifest.4f978f3c091882497d34b07a73369725.js",
   "service-worker.js": "/Alimentum-React-Redux-Client/service-worker.js"
 }
