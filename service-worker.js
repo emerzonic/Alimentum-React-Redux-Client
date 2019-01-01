@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Alimentum-React-Redux-Client/precache-manifest.4f978f3c091882497d34b07a73369725.js"
+  "/Alimentum-React-Redux-Client/precache-manifest.626e8a7fd5a7eef5be88f095ff3b9663.js"
 );
 
 workbox.clientsClaim();
