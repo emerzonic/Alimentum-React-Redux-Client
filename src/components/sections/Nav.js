@@ -16,28 +16,28 @@ const Nav = (props) => (
                     <span className="text-white ml-2">Menu</span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <a href="Alimentum-React-Redux-Client/categories" className="nav-link">
+                    <a href="/categories" className="nav-link">
                         <i className="fas fa-list-alt mr-2"></i>
                         Categories
                     </a>
-                    <a href={"Alimentum-React-Redux-Client/user/favorites"} className="nav-link">
+                    <a href={"/user/favorites"} className="nav-link">
                         <i className="far fa-star mr-2"></i>
                         Favorites
                     </a>
                     {props.currentUser.validToken?
-                    <a href="Alimentum-React-Redux-Client/logout" className="nav-link justify-self-end">
+                    <a href="/logout" className="nav-link justify-self-end">
                         <i className="fas fa-sign-out-alt mr-2"></i>
                             Logout
                     </a>
                     :""}
                     {!props.currentUser.validToken?
-                        <a href="Alimentum-React-Redux-Client/user-form/login" className="nav-link justify-self-end">
+                        <a href="/user-form/login" className="nav-link justify-self-end">
                             <i className="fas fa-sign-in-alt mr-2"></i>
                             Login
                         </a>
                     :""}
                     {!props.currentUser.validToken?
-                        <a href="Alimentum-React-Redux-Client/user-form/signup" className="nav-link justify-self-end">
+                        <a href="/user-form/signup" className="nav-link justify-self-end">
                             <i className="fas fa-user-plus mr-2"></i>
                             Sign Up
                         </a>
