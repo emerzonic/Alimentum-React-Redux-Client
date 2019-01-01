@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "https://serene-shelf-44263.herokuapp.com/",
-  "homepage": "https://emerzonic.github.io/Alimentum-React-Redux-Client",
+  "homepage": "https://emerzonic.github.io/index.html",
   "dependencies": {
     "axios": "^0.18.0",
     "jwt-decode": "^2.2.0",
