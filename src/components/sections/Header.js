@@ -68,7 +68,7 @@ class Header extends Component {
                                            onChange={this.onChange} value={this.state.name}/>
                                     <div className="input-group-append">
                                          <button className="btn btn-success" type="submit" id="button-addon2">
-                                            <i className="fas fa-search"></i> Search</button>
+                                            <i className="fas fa-search"></i></button>
                                     </div> 
                                 </div>
                             </form>
