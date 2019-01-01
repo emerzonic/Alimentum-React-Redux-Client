@@ -44,14 +44,14 @@ const App = () => (
     <Nav/>
       <div className="container-fluid .App-container p-0 m-0 ">
         <Route exact path="/" component={Home} />
-        <Route exact path="/categories" component={Category}/>
-        <Route exact path="/categories/:category" component={Recipes}/>
-        <Route exact path="/categories/:category/:recipe/:recipeId" component={RecipeDetail}/>
-        <Route exact path="/search/:searchTerm/results" component={Results}/> 
-        <Route exact path="/user/favorites" component={Favorites}/>
-        <Route exact path="/user-form/signup" component={SignUp}/>
-        <Route exact path="/user-form/login" component={Login}/>
-        <Route exact path="/logout" component={Logout}/>
+        <Route exact path="/Alimentum-React-Redux-Client/categories" component={Category}/>
+        <Route exact path="Alimentum-React-Redux-Client/categories/:category" component={Recipes}/>
+        <Route exact path="Alimentum-React-Redux-Client/categories/:category/:recipe/:recipeId" component={RecipeDetail}/>
+        <Route exact path="Alimentum-React-Redux-Client/search/:searchTerm/results" component={Results}/> 
+        <Route exact path="Alimentum-React-Redux-Client/user/favorites" component={Favorites}/>
+        <Route exact path="Alimentum-React-Redux-Client/user-form/signup" component={SignUp}/>
+        <Route exact path="Alimentum-React-Redux-Client/user-form/login" component={Login}/>
+        <Route exact path="Alimentum-React-Redux-Client/logout" component={Logout}/>
       </div>
       <PusherSmall/>
       <Footer/>
