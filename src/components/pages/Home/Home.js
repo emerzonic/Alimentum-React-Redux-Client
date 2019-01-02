@@ -19,7 +19,7 @@ class  Home extends Component {
       }
     render() { 
         return (
-            <div className="home-div bg-dark" style={img}>
+            <div className="home-div">
                 <div className="row">
                     <div className="col-md-12">
                         <h1 className="home-title">ALIMENTUM</h1>
@@ -28,20 +28,20 @@ class  Home extends Component {
                 </div>
                 <div className="row px-md-5 px-sm-2">
                     {this.props.menus.map((card,i)=>
-                        <div className="col-md-3" key={i}>
-                            <div className="card bg-dark text-white my-3 text-center home-page-cards border-0 shadow-lg" 
+                        <div className="col-xl-3 col-lg-3 col-md-3" key={i}>
+                            <div className="card bg-dark text-white my-md-3 text-center home-page-cards border-0 shadow-lg" 
                                  onClick={()=>this.props.history.push(card.url)}>
                                 <img className="card-img home-page-img" src={card.image} alt="Card"/>
                                 <div className="card-img-overlay">
                                     <h5 className="card-title text-white mt-4 page-links" >{card.text}</h5>
                                     <i className={card.icon}></i>
                                 </div>
-                            </div>                            
+                            </div> 
+                            <h5 className="menu-title shadow-lg" >{card.text}</h5>                           
                         </div>                            
                     )}
                 </div>
-                <div className="pusher">
-                </div>
+                 
         </div>
          );
     }

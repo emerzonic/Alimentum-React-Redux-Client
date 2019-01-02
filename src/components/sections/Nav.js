@@ -50,7 +50,7 @@ const Nav = (props) => (
                         </NavLink>
                     :""}
                     {props.currentUser.validToken?
-                        <NavLink to="/" className="nav-link" exact activeStyle={active}>
+                        <NavLink to={"/user/favorites"} className="nav-link">
                             <i className="fas fa-user-circle mr-2"></i> 
                             {props.currentUser.user.username}
                         </NavLink>

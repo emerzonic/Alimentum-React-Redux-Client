@@ -8,7 +8,6 @@ import Modal from '../../sections/Modal';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import store from "../../../store";
-import Img from '../../../assets';
 import  {Component} from 'react';
 import React from 'react';
 import Alert from "./Alert";
@@ -16,13 +15,6 @@ import Instructions from "./Instructions";
 import Ingredients from "./Ingredients";
 import "./detail.css";
 
-
-let img = {
-    backgroundImage: 'url(' +Img.youtube.img + ')',
-    backgroundRepeat:"no-repeat",
-    backgroundSize:"cover",
-    height:"6rem"
-  };
 class Recipe extends Component {
 
     saveRecipe = () => { 
