@@ -21,9 +21,9 @@ class  Home extends Component {
         return (
             <div className="home-div">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-12">
                         <h1 className="home-title">ALIMENTUM</h1>
-                        <h4 className="home-text">Where Food is Life</h4>
+                        <h4 className="home-text mb-sm-3">For the good of good food.</h4>
                     </div>
                 </div>
                 <div className="row px-md-5 px-sm-2">

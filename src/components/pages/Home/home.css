@@ -3,33 +3,36 @@
     --main-theme-font: 'Bree Serif', serif;
 }
 
-body{
+body {
     background-color: rgb(244, 247, 245);
 }
 
 
-.display-4{
-    font-size:2.5rem;
+.display-4 {
+    font-size: 2.5rem;
 }
 
 
-.category-title, .recipe-title, .card-title{
-    font-family:var(--main-theme-font); 
-    color:var(--main-theme-color); 
+.category-title,
+.recipe-title,
+.card-title {
+    font-family: var(--main-theme-font);
+    color: var(--main-theme-color);
 }
 
-.alert{
-    font-weight:bold;
+.alert {
+    font-weight: bold;
 }
 
-.home-page-cards{
+.home-page-cards {
     cursor: pointer;
-    transition: all 0.7s ease;  
+    transition: all 0.7s ease;
 }
 
-.page-links, .home-page-icons {
-    opacity:0;
-    color:#ffffff;
+.page-links,
+.home-page-icons {
+    opacity: 0;
+    color: #ffffff;
 }
 
 .home-page-icons {
@@ -41,55 +44,63 @@ body{
 }
 
 .home-page-cards:hover .page-links {
-    opacity:1;
+    opacity: 1;
 }
 
 .home-page-cards:hover .home-page-icons {
-    opacity:1;
+    opacity: 1;
 }
 
-.home-title{
+.home-title {
     padding: 2rem;
     font-size: 3rem;
     text-align: center;
     letter-spacing: 0.3rem;
     color: var(--main-theme-color);
-    font-family: var(--main-theme-font); 
-    border-bottom:0.3rem solid var(--main-theme-color); 
+    font-family: var(--main-theme-font);
+    border-bottom: 0.3rem solid var(--main-theme-color);
     margin-top: 10rem;
     padding-bottom: 1rem;
 }
 
-@media(min-width:500px){
-    .home-title{
-        letter-spacing: 1.2rem;
-    }
-
-}
-
-.home-text{
+.home-text {
     font-size: 1.5rem;
     text-align: center;
     letter-spacing: 0.3rem;
     color: var(--main-theme-color);
-    font-family: var(--main-theme-font); 
+    font-family: var(--main-theme-font);
 }
 
+.pusher {
+    height: 30rem;
+}
 
-  .pusher{
-      height:30rem;
-  }
-
-  .items-container{
+.items-container {
     min-height: 30rem;
 }
 
-.menu-title{
-    color:#ffffff;
+.menu-title {
+    color: #ffffff;
     background: var(--main-theme-color);
     text-align: center;
     padding: 1rem;
-    font-family: var(--main-theme-font); 
+    font-family: var(--main-theme-font);
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
+}
+
+
+@media(min-width:500px) {
+    .home-title {
+        letter-spacing: 1.2rem;
+    }
+}
+
+@media(max-width:700px) {
+    .menu-title {
+        margin-bottom: 1rem;
+    }
+    .home-text {
+        letter-spacing: 0.1rem;
+    }
 }
