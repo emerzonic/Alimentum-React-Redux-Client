@@ -6,7 +6,7 @@ import "./detail.css"
 
 const Ingredients = (props) => (
     <div className="col-md-4">
-        <h5 className="card-title"><i className="fas fa-carrot"></i> Ingredients</h5>
+        <h5 className="card-title ingredient-header"><i className="fas fa-carrot"></i> Ingredients</h5>
           <div className="card w-100 mr-2">
               <ul className="list-group list-group-flush border-0">
                 {props.strIngredients?
