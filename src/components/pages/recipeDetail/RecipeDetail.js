@@ -81,7 +81,7 @@ class Recipe extends Component {
                                 <i className="fas fa-plus mr-2"></i>
                                 Add To Favorites
                             </button>
-                            <a href={this.props.recipe.strSource} 
+                            <a href={this.props.recipe.strSource?this.props.recipe.strSource:"https://www.bbcgoodfood.com/"} 
                                className="btn btn-lg btn-link" target="_blank" rel="noopener noreferrer">
                                Read More
                                 <i className="fas fa-external-link-alt ml-2"></i>
