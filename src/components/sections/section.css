@@ -1,18 +1,16 @@
 #navbarNavDropdown .nav-link{
   font-family: var(--main-theme-font); 
   font-size: 1.3rem;
-  color:#ffffff
+  color:#ffffff;
+  padding:0.5rem 0;
+  margin-right: 1rem;
 }
 
 #navbarNavDropdown .nav-link:hover{
   color:var(--main-theme-color); 
   border-bottom:0.1rem solid var(--main-theme-color); 
 }
-/* 
-.nav-link:{
-  color:var(--main-theme-color); 
-  border-bottom:0.2rem solid var(--main-theme-color); 
-} */
+
 
 .navbar-light .navbar-brand{
   font-family: var(--main-theme-font); 
