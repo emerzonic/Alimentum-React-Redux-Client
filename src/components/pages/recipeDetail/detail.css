@@ -59,4 +59,13 @@ hr{
     margin-bottom:0;
 }
 
+.list-group-flush .list-group-item{
+    font-style: italic;
+    font-weight: 500;
+}
+
+.list-group-flush .list-group-item:nth-child(2n){
+	background: rgb(238, 247, 234);
+}
+
 
