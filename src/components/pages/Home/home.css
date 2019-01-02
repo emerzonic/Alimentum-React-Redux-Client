@@ -104,3 +104,8 @@ body {
         letter-spacing: 0.1rem;
     }
 }
+
+img{
+min-width: 1px;
+min-height: 1px;
+}
