@@ -1,9 +1,15 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import '../pages/home/home.css';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
+
+const active = {
+         color:'green',
+         borderBottom:'0.1rem solid green' 
+}
 
 const Nav = (props) => (
     <div>
@@ -17,37 +23,37 @@ const Nav = (props) => (
                     <span className="text-white ml-2">Menu</span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                    <Link to="/categories" className="nav-link">
+                    <NavLink to="/categories" className="nav-link" exact activeStyle={active}>
                         <i className="fas fa-list-alt mr-2"></i>
                         Categories
-                    </Link>
-                    <Link to={"/user/favorites"} className="nav-link">
+                    </NavLink>
+                    <NavLink to={"/user/favorites"} className="nav-link" exact activeStyle={active}>
                         <i className="far fa-star mr-2"></i>
                         Favorites
-                    </Link>
+                    </NavLink>
                     {props.currentUser.validToken?
-                    <Link to="/logout" className="nav-link justify-self-end">
+                    <NavLink to="/logout" className="nav-link" exact activeStyle={active}>
                         <i className="fas fa-sign-out-alt mr-2"></i>
                             Logout
-                    </Link>
+                    </NavLink>
                     :""}
                     {!props.currentUser.validToken?
-                        <Link to="/user-form/login" className="nav-link justify-self-end">
+                        <NavLink to="/user-form/login" className="nav-link" exact activeStyle={active}>
                             <i className="fas fa-sign-in-alt mr-2"></i>
                             Login
-                        </Link>
+                        </NavLink>
                     :""}
                     {!props.currentUser.validToken?
-                        <Link to="/user-form/signup" className="nav-link justify-self-end">
+                        <NavLink to="/user-form/signup" className="nav-link" exact activeStyle={active}>
                             <i className="fas fa-user-plus mr-2"></i>
                             Sign Up
-                        </Link>
+                        </NavLink>
                     :""}
                     {props.currentUser.validToken?
-                        <Link to="/" className="nav-link justify-self-end">
+                        <NavLink to="/" className="nav-link" exact activeStyle={active}>
                             <i className="fas fa-user-circle mr-2"></i> 
                             {props.currentUser.user.username}
-                        </Link>
+                        </NavLink>
                     :""}
                 </div>
             </nav>
@@ -55,10 +61,10 @@ const Nav = (props) => (
 );
 
 Nav.propTypes = {
-    currentUser:PropTypes.object.isRequired
+    currentUser:PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state =>({
     currentUser:state.currentUser
 })
-export default connect(mapStateToProps,null)(Nav);
+export default withRouter(connect(mapStateToProps,null)(Nav));
