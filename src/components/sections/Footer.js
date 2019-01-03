@@ -6,7 +6,7 @@ const Footer = () => (
     <p className="footer-text m-sm-4">Built with 
         <i className="fas fa-leaf ml-1"></i> Spring Boot REST Service backend & 
         <i className="fab fa-react ml-1"></i> React/Redux client.
-         Copyright &copy;2018 Emerson Doyah Projects
+         Copyright &copy;{new Date().getFullYear()} Emerson Doyah Projects
     </p>
     </div> 
 );
