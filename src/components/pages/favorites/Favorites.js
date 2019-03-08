@@ -11,7 +11,7 @@ import PageHeader from '../../sections/Page Header';
 import "./favorite.css";
 import PropTypes from "prop-types";
 import {connect} from 'react-redux';
-import {SET_DELETE_RECIPE_MESSAGE} from '../../../actions/types';
+import {Actions} from '../../../actions/types';
 import {getUserRecipes,deleteRecipe,} from "../../../actions/recipeActions";
 import {updatePageTitle} from "../../../actions/appUtilActions";
 import {setRedirectMessage} from "../../../actions/alertsActions";
@@ -26,7 +26,7 @@ class Favorites extends Component {
         this.props.deleteRecipe(recipeId, id);
         setTimeout(() => {
             store.dispatch({
-                type: SET_DELETE_RECIPE_MESSAGE,
+                type: Actions.SET_DELETE_RECIPE_MESSAGE,
                 payload: {}
             })
         }, 3000);

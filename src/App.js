@@ -11,7 +11,7 @@ import Recipes from "./components/pages/recipes/Recipes";
 import Category from "./components/pages/category/Category";
 import Favorites from "./components/pages/favorites/Favorites";
 import {
-  SET_CURRENT_USER
+  Actions
 } from "./actions/types";
 import {
   BrowserRouter as Router,
@@ -33,7 +33,7 @@ import PusherSmall from "./components/sections/Pusher-sm";
 const jwtToken = localStorage.getItem("JwtToken")
 if (jwtToken) {
   setJwtToken(jwtToken)
-  updateJwtToken(jwtToken, store.dispatch, SET_CURRENT_USER)
+  updateJwtToken(jwtToken, store.dispatch, Actions.SET_CURRENT_USER)
   checkJwtTokenStatus(jwtToken, store.dispatch)
 }
 

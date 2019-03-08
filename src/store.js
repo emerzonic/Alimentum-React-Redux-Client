@@ -5,7 +5,6 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-// import reducers from "./reducers";
 
 
 const initialState = {};

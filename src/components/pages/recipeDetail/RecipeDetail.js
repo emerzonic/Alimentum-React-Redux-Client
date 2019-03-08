@@ -1,7 +1,7 @@
 import {getRecipeById, saveRecipe, setModalContent } from "../../../actions/recipeActions";
 import { updatePageTitle} from "../../../actions/appUtilActions";
 import { setRedirectMessage } from "../../../actions/alertsActions";
-import {SET_SAVE_RECIPE_MESSAGE} from "../../../actions/types"
+import {Actions} from "../../../actions/types"
 import PageHeader from '../../sections/Page Header';
 import Header from '../../sections/Header';
 import Modal from '../../sections/Modal';
@@ -39,7 +39,7 @@ class Recipe extends Component {
 
     componentWillUnmount(){
         store.dispatch({
-            type:SET_SAVE_RECIPE_MESSAGE,
+            type:Actions.SET_SAVE_RECIPE_MESSAGE,
             payload:{}
         })    
     }

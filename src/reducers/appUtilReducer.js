@@ -1,7 +1,5 @@
 import {
-    GET_CATEGORIES,
-    SET_MENUS,
-    SET_PAGE_TITLE
+Actions
 } from "../actions/types";
 
 const initialState = {
@@ -13,15 +11,15 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_CATEGORIES:
+        case Actions.GET_CATEGORIES:
             return { ...state,
                 categories: action.payload
             }
-        case SET_MENUS:
+        case Actions.SET_MENUS:
             return { ...state,
                 menus: action.payload
             }
-        case SET_PAGE_TITLE:
+        case Actions.SET_PAGE_TITLE:
             return { ...state,
                 pageTitle: action.payload
             }

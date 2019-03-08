@@ -28,6 +28,7 @@ class Recipes extends Component {
     this.props.updatePageTitle(pageTitle);
   }
 
+
   render() {
     let category = this.props.match.params.category;
       return ( 
@@ -57,8 +58,8 @@ class Recipes extends Component {
     }
 
 Recipes.propTypes = {
-  getRecipesByCategory: PropTypes.func.isRequired,
   updatePageTitle: PropTypes.func.isRequired,
+  getRecipesByCategory: PropTypes.func.isRequired,
   pageTitle: PropTypes.string,
   errors: PropTypes.object,
   recipes: PropTypes.array.isRequired,

@@ -33,8 +33,8 @@ export const checkJwtTokenStatus = (token, dispatch)=>{
     const decodedToken = jwt_decode(token);
     const currentTime = Date.now() / 1000;
     if(decodedToken.exp < currentTime){
-        dispatch(logoutUser())
-        window.location.href="/user-form/login"
+        dispatch(logoutUser());
+        window.location.href="/user-form/login";
     }
  
 }

@@ -1,7 +1,7 @@
 // import axios from "axios";
 
 export default {
-
+    
     getRecipeObj: (rawObj) => {
         let ingredients = [],
             measurement = [],
@@ -17,7 +17,7 @@ export default {
         let instructions = [];
         let instString = rawObj.strInstructions.split('. ');
         instString.forEach((instr)=> {
-            var instr2 = instr.replace(/\n|\r/g, "");
+            let instr2 = instr.replace(/\n|\r/g, "");
             let instr3 = instr2.replace(/\.\d+/, ".");
             instructions.push(instr3)
         })

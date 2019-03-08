@@ -1,5 +1,5 @@
 import {
-    SET_REDIRECT_MESSAGE,    
+    Actions,    
 } from "./types";
 
 
@@ -9,7 +9,7 @@ export const setRedirectMessage = (status, action) => async dispatch => {
         text: `Please login to ${action}.`
     }
     dispatch({
-        type: SET_REDIRECT_MESSAGE,
+        type: Actions.SET_REDIRECT_MESSAGE,
         payload: status ? message : {}
     })
 }

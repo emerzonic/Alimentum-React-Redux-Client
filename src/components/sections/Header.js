@@ -3,7 +3,7 @@ import store from "../../store";
 import {
     Component
 } from 'react';
-import{RESET_ERRORS}from "../../actions/types"
+import{Actions}from "../../actions/types"
 import Img from '../../assets';
 import {
     getRecipeBySearchTerm
@@ -48,7 +48,7 @@ class Header extends Component {
         };
     }
     componentWillUnmount() {
-        store.dispatch({type:RESET_ERRORS, payload:{}});
+        store.dispatch({type:Actions.RESET_ERRORS, payload:{}});
     }
     render() { 
         const{errors}=this.props

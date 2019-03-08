@@ -1,9 +1,5 @@
 import {
-    GET_RECIPES,
-    GET_RECIPE,
-    GET_FAVORITE_RECIPES,
-    DELETE_RECIPE, 
-    SET_MODAL_CONTENT
+Actions
 } from "../actions/types";
 
 const initialState = {
@@ -15,23 +11,23 @@ const initialState = {
 
 export default function (state = initialState, action) {
     switch (action.type) {
-        case GET_RECIPES:
+        case Actions.GET_RECIPES:
             return { ...state,
                 recipes: action.payload
             }
-        case GET_RECIPE:
+        case Actions.GET_RECIPE:
             return { ...state,
                 recipe: action.payload
             }
-        case SET_MODAL_CONTENT:
+        case Actions.SET_MODAL_CONTENT:
             return { ...state,
                 isModalOpen:action.payload
             }
-        case GET_FAVORITE_RECIPES:
+        case Actions.GET_FAVORITE_RECIPES:
             return { ...state,
                 favoriteRecipes: action.payload
             }
-        case DELETE_RECIPE:
+        case Actions.DELETE_RECIPE:
             return { ...state,
                 favoriteRecipes: state.favoriteRecipes.filter(recipe => recipe.id !== action.payload)
             }

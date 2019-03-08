@@ -1,30 +1,16 @@
 import axios from "axios";
 import util from "../components/util";
-
-
-import {
-    GET_RECIPES,
-    GET_RECIPE,
-    GET_FAVORITE_RECIPES,
-    DELETE_RECIPE,
-    SET_SAVE_RECIPE_MESSAGE,
-    SET_DELETE_RECIPE_MESSAGE,
-    SET_MODAL_CONTENT
-} from "./types";
-import {
-    getErrors
-} from "./exceptionAction";
+import {Actions} from "./types";
+import { getErrors} from "./exceptionAction";
 
 
 
-//==============================================================
-//SEARCH RECIPE ACTION
-//==============================================================
+
 export const getRecipeBySearchTerm = (search, history) => async dispatch => {
     try {
         const res = await axios.post("/api/recipes/searchByName", search)
         dispatch({
-            type: GET_RECIPES,
+            type: Actions.GET_RECIPES,
             payload: res.data || []
         })
         history.push(`/search/${search.searchTerm}/results`)
@@ -39,7 +25,7 @@ export const getRecipesByCategory = (category) => async dispatch => {
     try {
         const res = await axios.get(`/api/recipes/searchByCategory/${category}`)
         dispatch({
-            type: GET_RECIPES,
+            type: Actions.GET_RECIPES,
             payload: res.data
         })
     } catch (err) {
@@ -53,7 +39,7 @@ export const getRecipeById = (recipeId) => async dispatch => {
         const res = await axios.get(`/api/recipes/searchByRecipeId/${recipeId}`)
         let refinedRecipe = util.getRecipeObj(res.data[0]);
         dispatch({
-            type: GET_RECIPE,
+            type: Actions.GET_RECIPE,
             payload: refinedRecipe
         })
     } catch (err) {
@@ -65,7 +51,7 @@ export const saveRecipe = (recipe, userId) => async dispatch => {
     try {
         const res = await axios.post(`/api/currentUser/saveRecipe/${userId}`, recipe)
         dispatch({
-            type: SET_SAVE_RECIPE_MESSAGE,
+            type: Actions.SET_SAVE_RECIPE_MESSAGE,
             payload: res.data
         })
     } catch (err) {
@@ -75,20 +61,17 @@ export const saveRecipe = (recipe, userId) => async dispatch => {
 
 export const setModalContent = (boolean) => async dispatch => {
         dispatch({
-            type: SET_MODAL_CONTENT,
+            type: Actions.SET_MODAL_CONTENT,
             payload: boolean
         })
 }
 
 
-//==============================================================
-//USER FAVORITE RECIPES ACTIONS
-//==============================================================
 export const getUserRecipes = (userId) => async dispatch => {
     try {
         const res = await axios.get(`/api/currentUser/getUserRecipes/${userId}`)
         dispatch({
-            type: GET_FAVORITE_RECIPES,
+            type: Actions.GET_FAVORITE_RECIPES,
             payload: res.data
         })
     } catch (err) {
@@ -101,11 +84,11 @@ export const deleteRecipe = (recipeId, userId) => async dispatch => {
         const deleteResponse = await axios.delete(`/api/currentUser/deleteRecipe/${userId}/${recipeId}`)
 
         dispatch({
-            type: DELETE_RECIPE,
+            type: Actions.DELETE_RECIPE,
             payload: recipeId
         })
         dispatch({
-            type: SET_DELETE_RECIPE_MESSAGE,
+            type: Actions.SET_DELETE_RECIPE_MESSAGE,
             payload: deleteResponse.data
         })
     } catch (err) {

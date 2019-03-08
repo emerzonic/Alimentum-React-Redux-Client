@@ -1,7 +1,14 @@
 import React from 'react';
-import { Component } from 'react';
-import { connect } from 'react-redux';
-import { getCategories , updatePageTitle } from "../../../actions/appUtilActions";
+import {
+    Component
+} from 'react';
+import {
+    connect
+} from 'react-redux';
+import {
+    getCategories,
+    updatePageTitle
+} from "../../../actions/appUtilActions";
 import PageHeader from '../../sections/Page Header';
 import Header from "../../sections/Header";
 import Loading from '../../sections/Loading';
@@ -9,14 +16,14 @@ import PropTypes from "prop-types";
 import '../home/home.css';
 import "./category.css";
 
-class  Category extends Component {
+class Category extends Component {
 
-componentDidMount(){
-    this.props.getCategories();
-    this.props.updatePageTitle("Recipe Categories");
-  }
+    componentDidMount() {
+        this.props.getCategories();
+        this.props.updatePageTitle("Recipe Categories");
+    }
     render() { 
-        return (
+        return( 
             <div>
                 <Header {...this.props}/>
                 <PageHeader {...this.props}/>
@@ -42,18 +49,21 @@ componentDidMount(){
          );
     }
 }
- 
-Category.propTypes = {
-    updatePageTitle:PropTypes.func.isRequired,
-    getCategories:PropTypes.func.isRequired,
-    pageTitle:PropTypes.string,
-    errors:PropTypes.object,
-    categories:PropTypes.array.isRequired,
+
+    Category.propTypes = {
+        updatePageTitle: PropTypes.func.isRequired,
+        getCategories: PropTypes.func.isRequired,
+        pageTitle: PropTypes.string,
+        errors: PropTypes.objectOf,
+        categories: PropTypes.array.isRequired,
     }
-  
-  const mapStateToProps = state =>({
-      errors:state.error,
-      categories:state.appUtil.categories,
-      pageTitle:state.appUtil.pageTitle
-  })
-export default connect(mapStateToProps,{getCategories, updatePageTitle})(Category);
+
+    const mapStateToProps = state => ({
+        errors: state.error,
+        categories: state.appUtil.categories,
+        pageTitle: state.appUtil.pageTitle
+    })
+    export default connect(mapStateToProps, {
+        getCategories,
+        updatePageTitle
+    })(Category);
