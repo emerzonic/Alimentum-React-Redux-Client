@@ -6,7 +6,7 @@ export default {
         let ingredients = [],
             measurement = [],
             keys = Object.keys(rawObj);
-        debugger;
+            
         keys.forEach(key => {
             if (/strIngredient.*/.test(key) && rawObj[key]) {
                 ingredients.push(rawObj[key]);
@@ -42,7 +42,7 @@ export default {
         return refinedRecipeObj;
     },
 
-    getDataArray: (obj) => {
+    convertToArray: (obj) => {
         let array = [];
         for (const key of Object.keys(obj)) {
             array.push(obj[key]);

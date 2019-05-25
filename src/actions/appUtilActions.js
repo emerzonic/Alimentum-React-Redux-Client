@@ -4,7 +4,7 @@ import { Actions
 } from "./types";
 
 export const getMenus = () => async dispatch => {
-    let homePageMenus = util.getDataArray(assets.homeCardsObj)
+    let homePageMenus = util. convertToArray(assets.homeCardsObj)
     dispatch({
         type: Actions.SET_MENUS,
         payload: homePageMenus
@@ -12,7 +12,7 @@ export const getMenus = () => async dispatch => {
 }
 
 export const getCategories = () => async dispatch => {
-    let categories = util.getDataArray(assets.category)
+    let categories = util. convertToArray(assets.category)
     dispatch({
         type: Actions.GET_CATEGORIES,
         payload: categories
