@@ -37,7 +37,7 @@ export const getRecipesByCategory = (category) => async dispatch => {
 export const getRecipeById = (recipeId) => async dispatch => {
     try {
         const res = await axios.get(`/api/recipes/searchByRecipeId/${recipeId}`)
-        let refinedRecipe = util.getRecipeObj(res.data[0]);
+        let refinedRecipe = util.getCleanUpRecipes(res.data[0]);
         dispatch({
             type: Actions.GET_RECIPE,
             payload: refinedRecipe

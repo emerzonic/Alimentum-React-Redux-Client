@@ -1,22 +1,24 @@
 // import axios from "axios";
 
 export default {
-    
-    getRecipeObj: (rawObj) => {
+
+    getCleanUpRecipes: (rawObj) => {
         let ingredients = [],
             measurement = [],
             keys = Object.keys(rawObj);
-
-        keys.forEach(function (key) {
-            if (/strIngredient.*/.test(key) && rawObj[key] !== null && rawObj[key] !== '') {
+        debugger;
+        keys.forEach(key => {
+            if (/strIngredient.*/.test(key) && rawObj[key]) {
                 ingredients.push(rawObj[key]);
-            } else if (/strMeasure.*/.test(key) && rawObj[key] !== null && rawObj[key] !== '') {
+            } else if (/strMeasure.*/.test(key) && rawObj[key]) {
                 measurement.push(rawObj[key]);
             }
         });
+
         let instructions = [];
         let instString = rawObj.strInstructions.split('. ');
-        instString.forEach((instr)=> {
+
+        instString.forEach(instr => {
             let instr2 = instr.replace(/\n|\r/g, "");
             let instr3 = instr2.replace(/\.\d+/, ".");
             instructions.push(instr3)
