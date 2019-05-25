@@ -1,12 +1,10 @@
-// import axios from "axios";
-
 export default {
 
     getCleanUpRecipes: (rawObj) => {
         let ingredients = [],
             measurement = [],
             keys = Object.keys(rawObj);
-            
+
         keys.forEach(key => {
             if (/strIngredient.*/.test(key) && rawObj[key]) {
                 ingredients.push(rawObj[key]);
